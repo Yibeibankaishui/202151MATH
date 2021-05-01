@@ -16,51 +16,99 @@
 \usepackage{appendix}
 \usepackage{setspace}
 \usepackage{url}
+\usepackage{geometry}
+\geometry{left=3.18cm,right=3.18cm,top=2.54cm,bottom=2.54cm}
 
-\newcommand{\zhengwen}{def}
+\linespread{1.3}
 
 \begin{document}
 	
-	\setlength{\baselineskip}{20pt}
+	%	\setlength{\baselineskip}{20pt}
 	\zihao{-4} \songti
 	
 	\tableofcontents
 	\newpage
 	
 	\section{问题重述}
-	\subsection{问题一}
-	\subsection{问题二}
-	\subsection{问题三}
-	\subsection{问题四}
+	各国为控制疫情研发新冠疫苗。若干种疫苗需要顺序经过若干个工位生产。考虑到疫苗在不同工位生产的时间和顺序，我们需要根据疫苗生产的条件和要求，对不同环境的疫苗生产进行建模，以保证疫苗生产的高效性和有序性。
+	
+	首先疫苗生产有严格的限制条件：同一类型100剂疫苗为一箱进行处理；每种疫苗按照CJ1-CJ2-CJ3-CJ4的顺序在4个工位进行了加工；每个工位不能同时生产不同类型的疫苗，疫苗生产不允许插队，即进入第一个工位安排的每类疫苗的生产顺序决定整体生产顺序。其次有YM1-YM10等10种不同类型的疫苗需要生产。
+	
+	考虑以上影响因素，我们需要解决以下问题。
+	
+	\textbf{问题一：}
+	对每箱疫苗在所有工位上的生产时间进行均值、方差、最值、概率分布等统计分析，掌握每个工位生产疫苗的能力水平。
+	
+	\textbf{问题二：}
+	在最短时间内，生产YM1-YM10各100剂疫苗，建立数学模型，求出疫苗生产的顺序和生产总时间，并将结果填入表1。
+	
+	\textbf{问题三：}
+	考虑疫苗实际生产时间的随机性。要求总时间比问题2给定的最短时间缩短5\%，建立数学模型，以最大的概率完成这个任务为目标，确定生产顺序，并给出缩短的时间比例与最大概率之间的关系。
+	
+	\textbf{问题四：}
+	附件2中规定了不同规模的10种类型的生产任务。在每个每个工位每天生产的时间不能超过16小时和每种类型疫苗的生产任务不可以拆分的情况下，建立数学模型，使得可靠性为90\%，求出完成任务的最少天数。
+	
+	\textbf{问题五：}
+	对于附件2中的疫苗生产任务，在生产时间限制在100天内、每个工位每天生产的时间不能超过16小时和每种类型疫苗的生产任务可以适当拆分的情况下，建立数学模型，安排生产计划，使得销售额达到最大值。
 	
 	\section{问题分析}
-	\subsection{问题一}
-	\subsection{问题二}
-	\subsection{问题三}
-	\subsection{问题四}
+	\textbf{对问题一的分析：}问题一要对多组数据进行多种统计分析，考虑数据处理的方便性，我们先对数据进行预处理，采取部分数据确定其概率分布方式，再定义一个求取一组数据均值、方差、最值和确定分布方式的函数，最后使用函数对每组数据进行统计分析。
+	
+	\textbf{对问题二的分析：}问题二要制定疫苗的生产顺序和计算生产总时间。考虑到题目中的加工工位顺序和生产不允许排队的限制条件是非线性的，因此可以先用程序搜索出满足要求的可行的生产方案，从而解除非线性约束。根据可行的生产方案，我们采用启发式算法搜索最优解，即最短生产时间，并不断检查是否满足剩余的两项的限制条件，注意记录最优解的疫苗生产顺序。
+	
+	\textbf{对问题三的分析：}问题三要制定缩短时间下最大概率疫苗的生产顺序，以及给出缩短的时间比例与最大概率之间的关系。在问题二的基础上，将约束条件改成生产时间缩短5\%，用程序搜索满足对应的条件的可行方案，再采用启发式算法求最优解，但与问题二不同，最优解改成求最大概率，并注意记录最优解的疫苗产生顺序。启发式算法求最优解的过程，同样也是求最大概率与缩短时间的关系。
+	
+	\textbf{对问题四的分析：}
+	
+	
+	\textbf{对问题五的分析：}
+	
 	
 	\section{模型假设}
+	为了简化问题，便于分析和求解，对模型进行以下合理的假设：
+	\begin{enumerate}
+		\item
+	\end{enumerate}
 	
 	\section{定义和符号说明}
 	
 	\section{模型建立、求解和分析}
 	\subsection{问题一}
+	\subsubsection{1}
+	\subsubsection{2}
+	\subsubsection{3}
+	
 	\subsection{问题二}
+	\subsubsection{1}
+	\subsubsection{2}
+	\subsubsection{3}
+	
 	\subsection{问题三}
+	\subsubsection{1}
+	\subsubsection{2}
+	\subsubsection{3}
+	
 	\subsection{问题四}
+	\subsubsection{1}
+	\subsubsection{2}
+	\subsubsection{3}
+	
+	\subsection{问题五}
+	\subsubsection{1}
+	\subsubsection{2}
+	\subsubsection{3}
 	
 	\section{模型评价}
-
-	\section{总结}
+	
 	
 	\section{参考文献}
-%	\begin{thebibliography}{9}%宽度9
-%		\bibitem{bib:one} ....
-%	\end{thebibliography}
-
+	%	\begin{thebibliography}{9}%宽度9
+	%		\bibitem{bib:one} ....
+	%	\end{thebibliography}
+	
 	\section{附录}
 	\begin{appendices}
 		
 	\end{appendices}
-
+	
 \end{document}
