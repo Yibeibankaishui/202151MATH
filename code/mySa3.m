@@ -1,5 +1,5 @@
 %模拟退火
-function [best_solution,best_fit,iter,pkq] = mySa(solution,a,t0,tf,Markov,avg)
+function [best_solution,best_fit,iter,nice] = mySa3(solution,a,t0,tf,Markov,avg,var)
 % ===== 输入 ======%
 % solution 初始解 
 % a 温度衰减系数 0.99
@@ -13,8 +13,8 @@ function [best_solution,best_fit,iter,pkq] = mySa(solution,a,t0,tf,Markov,avg)
 n = length(solution);
 t = t0;
 solution_new = solution;  % 初始解赋给最新的解
-best_fit = Inf;   % 初始化最优适应度（最差的适应度）
-fit = Inf;      %  初始化当前的适应度
+best_fit = 0;   % 初始化最优适应度（最差的适应度）
+fit = 0;      %  初始化当前的适应度
 best_solution = solution;  % 最优解
 iter = 1;
 q=1;
@@ -28,6 +28,11 @@ while t >= tf
             while(ind1 == ind2 && ind1 >= ind2)
                 ind1 = ceil(rand*n);
                 ind2 = ceil(rand*n);
+            end
+            if (ind1 == 10)
+                ind2 = 1;
+            else
+                ind2 = ind1+1;
             end
             temp = solution_new(ind1);
             solution_new(ind1) = solution_new(ind2);
@@ -48,13 +53,13 @@ while t >= tf
         end
 % -----------------------计算适应度过程------------------------------------ %
         %计算适应度fit_new
-        fit_new = getT(solution_new,avg);
+        fit_new = getT3(solution_new,avg,var);
 % -----------------------解的更新过程------------------------------------ %
-        if fit_new<fit 
+        if fit_new > fit 
             fit = fit_new;
             solution = solution_new;
             %对最优路线和距离更新
-            if  fit_new < best_fit           
+            if  fit_new > best_fit           
                 iter = iter + 1;
                 best_fit = fit_new;
                 best_solution = solution_new;
@@ -68,35 +73,8 @@ while t >= tf
         solution_new = solution;
     end
     t = t*a; %降温
-    pkq(q,:) = solution_new;
+    %pkq(q,:) = solution_new;
+    nice(q) = fit_new;
     q=q+1;
 end
-end
-
-%求t
-function[t] = getT( P,avg )
-N = zeros(4,16);
-%扩充
-for n = 1:10
-N(1:4,3+n) = avg(1:4,P(n));
-end
-i = 4;
-Tarray = zeros(4) ;
-while (i<=16)
-    Tarray(1) = Tarray(1) + N(1,i);
-    Tarray(2) = Tarray(2) + N(2,i-1);
-    if(Tarray(2)<Tarray(1))
-        Tarray(2) = Tarray(1);
-    end
-    Tarray(3) = Tarray(3) + N(3,i-2);
-    if(Tarray(3)<Tarray(2))
-        Tarray(3) = Tarray(2);
-    end
-    Tarray(4) = Tarray(4) + N(4,i-3);
-    if(Tarray(4)<Tarray(3))
-        Tarray(4) = Tarray(3);
-    end 
-i = i + 1;
-end
-t = Tarray(4); 
 end
