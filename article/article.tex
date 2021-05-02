@@ -93,15 +93,22 @@
 			\toprule[2pt]
 			符号 & 说明   \\
 			\hline
-			1 & 疫苗  \\
-			  &  工位 \\
-			 $T_{ij}$&  第$i$个疫苗在第$j$个工位上的生产耗时 \\
+			$YM1\sim YM10$ & 疫苗  \\
+			$CJ1\sim CJ4$ &  工位 \\
+			$T_{ij}$&  第$i$个疫苗在第$j$个工位上的生产用时（符合正态分布）\\
+			$\mu_{ij}$& 均值\\
+			$\sigma_{ij}$ & 方差\\
+			$T_{\Sigma}$ & 总用时 \\
+			$\alpha_{ij}$ & 加权系数\\
+			$T_{W}$ & 等待时间 \\
+			$M$ & 销售额 \\
 			  
 			\bottomrule[2pt]
 		\end{tabular}\caption{表格标题}\label{p1}
 	\end{table}
 	
-	
+	\section{数学基础}
+	\subsection{正态分布}
 	
 	\section{模型建立、求解和分析}
 	\subsection{问题一}
@@ -234,8 +241,22 @@
 	\subsubsection{模型分析}
 	
 	\subsection{问题三}
-	\subsubsection{1}
-	\subsubsection{2}
+	\subsubsection{模型建立}
+	考虑其随机性，每个工位生产每种疫苗的所需时间$T_{ij}$均符合正态分布，即
+	\begin{equation}
+		T_{ij}\sim\mathcal{N}(\mu_{ij},\sigma_{ij})
+	\end{equation}
+	类似于流水线工作，如图所示
+	%插入图，流水线
+	虽然每个工位生产每种疫苗的耗时有随机性，但是其大小对比关系基本不变。因此我们用均值
+	总用时是$T_{ij}$的线性组合。也符合正态分布。
+	\begin{equation}
+		T_{\Sigma}=\sum_{i,j}\alpha_{ij}T_{ij}
+	\end{equation}
+	我们求出其正态分布的参数
+	\subsubsection{模型求解}
+	我们首先求得在既定生产顺序下
+	以最大的概率完成这个任务，生产的最优顺序为
 	\subsubsection{3}
 	
 	\subsection{问题四}
