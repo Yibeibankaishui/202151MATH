@@ -16,7 +16,7 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \graphicspath{{figures/}}
-\usepackage{subfig}
+\usepackage{subfigure}
 \usepackage{appendix}
 \usepackage{setspace}
 \usepackage{url}
@@ -148,106 +148,130 @@
 			
 			\item Z分数（Z-score） 
 			
-			偏度Z-score=偏度值/标准误，峰度Z-score=峰度值/标准误。在$\alpha$=0.05的检验水平下，若Z-score在±1.96之间，则可认为资料服从正态分布。
-			通过SPSS处理部分数据得到的结果如下图：	
-%			\begin{figure}[h]
-%				\centering %图片居中显示
-%				\includegraphics{1_偏度与峰度}
-%				\caption{偏度与峰度}
-%			\end{figure}
-		由图中数据计算可得可得Z-Scroe均处于±1.96之间，可认为四组数据均服从正态分布。			
+			\qquad 偏度Z-score=偏度值/标准误，峰度Z-score=峰度值/标准误。在$\alpha$=0.05的检验水平下，若Z-score在±1.96之间，则可认为资料服从正态分布。
+			
+			\qquad 通过SPSS处理部分数据得到的结果如下图：	
+			\begin{figure}[H]
+				\centering %图片居中显示
+				\includegraphics[scale=0.5]{1_piandu.jpg}
+				\caption{偏度与峰度}
+			\end{figure}
+			\qquad 由图中数据计算可得可得Z-Scroe均处于±1.96之间，可认为四组数据均服从正态分布。			
 		\end{enumerate}
 		\item 图形判断
-		\begin{enumerate}
-			\item 直方图：表示连续性变量的频数分布，可以用来考察是否服从正态分布
-			通过SPSS处理部分数据得到的结果如下图：
-%			\begin{figure}[h]
-%				\centering %图片居中显示
-%				\includegraphics{1_偏度与峰度}
-%				\caption{偏度与峰度}
-%			\end{figure}
-			\item P-P图和Q-Q图
-			
-			P-P图反映了变量的实际累积概率与理论累积概率的符合程度，Q-Q图反映了变量的实际分布与理论分布的符合程度。若数据点与理论直线（即对角线）基本重合，就认为数据服从正态分布。
-			通过SPSS处理部分数据得到的结果如下图：
-%			\begin{figure}[tbp]
-%				\centering
-%				\subfloat[Arabicnumerals]{\label{fig:a}\includegraphics[width=1in]{1_pp}}\quad
-%				\subfloat[Arabicnumerals]{\label{fig:b}\includegraphics[width=1in]{1_qq}}\\	
-%				\caption{}
-%			\end{figure}
-			
-		\end{enumerate}
+		
+		1.直方图：表示连续性变量的频数分布，可以用来考察是否服从正态分布
+		
+		\qquad 通过SPSS处理部分数据得到的结果如下图：
+		\begin{figure}[H]
+			\centering %图片居中显示
+			\includegraphics[scale=0.5]{1_zhifang.jpg}
+			\caption{直方图}
+		\end{figure}
+		2.P-P图和Q-Q图
+		
+		\qquad P-P图反映了变量的实际累积概率与理论累积概率的符合程度，Q-Q图反映了变量的实际分布与理论分布的符合程度。若数据点与理论直线（即对角线）基本重合，就认为数据服从正态分布。
+		
+		\qquad 通过SPSS处理部分数据得到的结果如下图：
+		
+		\begin{figure}[H]
+			\centering
+			\subfigure[P-P图]{\includegraphics[scale=0.5]{1_pp.jpg}}
+			\subfigure[Q-Q图]{\includegraphics[scale=0.5]{1_qq.jpg}}
+			\caption{ P-P图和Q-Q图 }
+		\end{figure}
+		
+		\qquad 由图可知P-P图和Q-Q图的数据点都与应与对角线基本重合，所以认为数据符合正态分布。
 	\end{itemize}
-	\subsubsection{模型求解}
-		\begin{table}[!ht]
-			\caption{工位CJ1的疫苗生产水平}\label{}
-			\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }
-				\toprule[2pt]
-				      & YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\
-				\hline
-				
-				均值  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
-				
-				方差  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	   \\
-				
-				最小值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	  \\
-				
-				最大值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
-				\bottomrule[2pt]			
-			\end{tabular*}
-		\end{table}
-		\begin{table}[!ht]
-			\caption{工位CJ2的疫苗生产水平}\label{}
-			\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }
-				\toprule[2pt]
-				& YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\
-				\hline
-				
-				均值  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
-				
-				方差  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	   \\
-				
-				最小值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	  \\
-				
-				最大值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
-				\bottomrule[2pt]			
-			\end{tabular*}
-		\end{table}
-		\begin{table}[!ht]
-			\caption{工位CJ3的疫苗生产水平}\label{}
-			\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }
-				\toprule[2pt]
-				& YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\
-				\hline
-				
-				均值  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
-				
-				方差  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	   \\
-				
-				最小值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	  \\
-				
-				最大值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
-				\bottomrule[2pt]			
-			\end{tabular*}
-		\end{table}
-		\begin{table}[!ht]
-			\caption{工位CJ4的疫苗生产水平}\label{}
-			\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }
-				\toprule[2pt]
-				& YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\
-				\hline
-				
-				均值  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
-				
-				方差  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	   \\
-				
-				最小值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	  \\
-				
-				最大值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
-				\bottomrule[2pt]			
-			\end{tabular*}
-		\end{table}
+	\subsubsection{统计分析}
+	经过上述对部分数据的正态性检验，我们可以认为附件1中每组数据均服从正态分布。统计分析中的概率分布均采用正态分布进行处理。
+	
+	1.数据预处理 
+	
+	使用EXCEL对数据进行对数据进行分列处理和简单的数据清洗，将数据以矩阵形式输入MATLAB。矩阵每行数据为某类疫苗在某个工位模拟处加工50次的生产时间。
+	
+	2. 用MATLAB进行统计分析
+	
+	在MATLAB中使用求平均数、方差、最值的函数对输入数据的矩阵逐行处理并储存，结果如表2-5显示，结果定量地体现了每个工位对10种疫苗不同的生产水平，对疫苗生产具有重要参考价值。
+	
+	\begin{table}[!ht]
+		\caption{工位CJ1的疫苗生产水平}\label{}
+		\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }
+			\toprule[2pt]
+			& YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\
+			\hline
+			
+			均值  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
+			
+			方差  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	   \\
+			
+			最小值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	  \\
+			
+			最大值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
+			\bottomrule[2pt]			
+		\end{tabular*}
+	\end{table}
+	\begin{table}[!ht]
+		\caption{工位CJ2的疫苗生产水平}\label{}
+		\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }
+			\toprule[2pt]
+			& YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\
+			\hline
+			
+			均值  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
+			
+			方差  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	   \\
+			
+			最小值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	  \\
+			
+			最大值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
+			\bottomrule[2pt]			
+		\end{tabular*}
+	\end{table}
+	\begin{table}[!ht]
+		\caption{工位CJ3的疫苗生产水平}\label{}
+		\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }
+			\toprule[2pt]
+			& YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\
+			\hline
+			
+			均值  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
+			
+			方差  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	   \\
+			
+			最小值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	  \\
+			
+			最大值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
+			\bottomrule[2pt]			
+		\end{tabular*}
+	\end{table}
+	\begin{table}[!ht]
+		\caption{工位CJ4的疫苗生产水平}\label{}
+		\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }
+			\toprule[2pt]
+			& YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\
+			\hline
+			
+			均值  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
+			
+			方差  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	   \\
+			
+			最小值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	  \\
+			
+			最大值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
+			\bottomrule[2pt]			
+		\end{tabular*}
+	\end{table}
+	
+	对于概率分析，经正态性检验可知，数据服从正态分布，由均值和方差我们可以画出每组数据的正态分布曲线，近似于数据本身的概率分布曲线。结果如图显示。从概率分布曲线我们可以更宏观且直观地了解每个工位生产疫苗的能力水平。
+	
+		\begin{figure}[H]
+			\centering %图片居中显示
+			\includegraphics[scale=0.5]{1_zhengtai.jpg}
+			\caption{概率分布曲线}
+		\end{figure}
+	
+	在统计分析中，我们采用数据表格和曲线图像两种方式，定性和定量地全面分析了不同工位对不同疫苗的生产能力水平，有利于直观明了地掌握掌握工位生产疫苗的能力水平，为疫苗生产提供参考。
 	
 	\subsection{问题二}
 	\subsubsection{模型建立}
