@@ -261,6 +261,21 @@
 	总时间的求解算法
 	\subsubsection{模型求解}
 	我们使用模拟退火算法求解
+	算法流程：
+	解空间
+	算法的每一个解为十种类型疫苗的不同排列
+	\begin{equation}
+		S=\{(x_1,x_2,\dots,x_{10})|x_{i}\in[YM1,YM2,\dots,YM10],x_{i}\neq x_{j}\}
+	\end{equation}
+	其中$x_{i}$表示第$i$个被生产的疫苗编号。
+	初始解
+	目标函数：本问题的目标函数为总用时，目标为最小化用时，即
+	\begin{equation}
+		\min
+	\end{equation}
+	计算目标函数差值
+	降温
+	接受准则
 	\par 结果
 	\subsubsection{模型分析}
 	
@@ -270,6 +285,7 @@
 	\begin{equation}
 		T_{ij}\sim\mathcal{N}(\mu_{ij},\sigma_{ij})
 	\end{equation}
+	
 	类似于流水线工作，如图所示
 	%插入图，流水线
 	虽然每个工位生产每种疫苗的耗时有随机性，但是其大小对比关系基本不变。因此我们用均值
