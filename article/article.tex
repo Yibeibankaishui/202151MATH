@@ -14,6 +14,7 @@
 \pagestyle{empty}
 \usepackage{float}
 \usepackage{graphicx}
+\usepackage{amsmath}
 \graphicspath{{figures/}}
 \usepackage{subfig}
 \usepackage{appendix}
@@ -102,6 +103,8 @@
 			$\alpha_{ij}$ & 加权系数\\
 			$T_{W}$ & 等待时间 \\
 			$M$ & 销售额 \\
+			$m_{i}$ & 疫苗$i$的单价 \\
+			$n_{i}$ & 疫苗$i$的产量 \\
 			  
 			\bottomrule[2pt]
 		\end{tabular}\caption{表格标题}\label{p1}
@@ -109,6 +112,17 @@
 	
 	\section{数学基础}
 	\subsection{正态分布}
+	若连续型随机变量$X$的概率密度为
+	\begin{equation}
+		f(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+	\end{equation}
+	则称$X$服从参数为$\mu$，$\sigma$的正态分布，记为$X\sim\mathcal{N}(\mu,\sigma^2)$
+	随机变量$X$的分布函数为
+	\begin{equation}
+		F(x)=\frac{1}{\sqrt{2\pi}\sigma}\int^{x}_{-\infty}e^{-\frac{(t-\mu)^2}{2\sigma^2}}dt
+	\end{equation}
+	\subsection{多元随机变量}
+	多个相互独立的正态分布随机变量的线性组合也符合正态分布。
 	
 	\section{模型建立、求解和分析}
 	\subsection{问题一}
@@ -237,7 +251,17 @@
 	
 	\subsection{问题二}
 	\subsubsection{模型建立}
+	建立优化模型如下
+	\begin{equation}
+		\begin{split}
+		\min &T\\
+		&s.t.
+		\end{split}
+	\end{equation}
+	总时间的求解算法
 	\subsubsection{模型求解}
+	我们使用模拟退火算法求解
+	\par 结果
 	\subsubsection{模型分析}
 	
 	\subsection{问题三}
@@ -253,20 +277,47 @@
 	\begin{equation}
 		T_{\Sigma}=\sum_{i,j}\alpha_{ij}T_{ij}
 	\end{equation}
+	\begin{equation}
+		T_{\Sigma}\sim\mathcal{N}(\mu_{\Sigma},\sigma_{\Sigma})
+	\end{equation}
 	我们求出其正态分布的参数
+	$\mu_{\Sigma}=\sum_{i,j}\alpha_{ij}\mu_{ij}$,$\sigma_{\Sigma}=\sum_{i,j}\alpha_{ij}\sigma_{ij}$
+	\par 建立优化模型：
+	\begin{equation}
+	\begin{split}
+		\max P(T_{\Sigma}<0.95T_{\min})
+	\end{split}
+	\end{equation}
 	\subsubsection{模型求解}
 	我们首先求得在既定生产顺序下
 	以最大的概率完成这个任务，生产的最优顺序为
 	\subsubsection{3}
 	
 	\subsection{问题四}
-	\subsubsection{1}
-	\subsubsection{2}
+	\subsubsection{模型建立}
+	每种疫苗的生产用时由其耗时最多的工位决定。
+	\subsubsection{模型求解}
 	\subsubsection{3}
 	
 	\subsection{问题五}
-	\subsubsection{1}
-	\subsubsection{2}
+	\subsubsection{模型建立}
+	建立优化模型
+	目标函数为销售额$M$
+	每个疫苗的最大产量不超过任务数量
+	\begin{equation}
+		M=\sum_{i}n_{i}m_{i}
+	\end{equation}
+	不考虑随机性，将均值即为每种疫苗的生产用时。总时间为
+	\begin{equation}
+		T=\sum_{i}n_{i}t_{i}
+	\end{equation}
+	\begin{equation}
+	\begin{split}
+		aa
+	\end{split}
+	\end{equation}
+	优化目标为销售额
+	\subsubsection{模型求解}
 	\subsubsection{3}
 	
 	\section{模型评价}
