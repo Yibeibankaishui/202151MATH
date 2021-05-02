@@ -12,9 +12,10 @@
 	}
 }
 \pagestyle{empty}
+\usepackage{float}
 \usepackage{graphicx}
-\usepackage{graphicx}
-\usepackage{subfigure}
+\graphicspath{{figures/}}
+\usepackage{subfig}
 \usepackage{appendix}
 \usepackage{setspace}
 \usepackage{url}
@@ -104,9 +105,60 @@
 	
 	\section{模型建立、求解和分析}
 	\subsection{问题一}
-	\subsubsection{1}
-	\subsubsection{2}
-
+	\subsubsection{数据的正态性检验}
+	\begin{itemize}
+		\item 偏度和峰度
+		\begin{enumerate}
+			\item 偏度：描述数据分布不对称的方向及其程度
+			
+			当偏度≈0时，可认为分布是对称的，服从正态分布；
+			
+			当偏度>0时，分布为右偏，即拖尾在右边，峰尖在左边，也称为正偏态；
+			
+			当偏度<0时，分布为左偏，即拖尾在左边，峰尖在右边，也称为负偏态；
+			
+			\item 峰度：描述数据分布形态的陡缓程度
+			
+			当峰度≈0时，可认为分布的峰态合适，服从正态分布（不胖不瘦）；
+			
+			当峰度>0时，分布的峰态陡峭（高尖）；
+			
+			当峰度<0时，分布的峰态平缓（矮胖）；
+			
+			\item Z分数（Z-score） 
+			
+			偏度Z-score=偏度值/标准误，峰度Z-score=峰度值/标准误。在$\alpha$=0.05的检验水平下，若Z-score在±1.96之间，则可认为资料服从正态分布。
+			通过SPSS处理部分数据得到的结果如下图：	
+%			\begin{figure}[h]
+%				\centering %图片居中显示
+%				\includegraphics{1_偏度与峰度}
+%				\caption{偏度与峰度}
+%			\end{figure}
+		由图中数据计算可得可得Z-Scroe均处于±1.96之间，可认为四组数据均服从正态分布。			
+		\end{enumerate}
+		\item 图形判断
+		\begin{enumerate}
+			\item 直方图：表示连续性变量的频数分布，可以用来考察是否服从正态分布
+			通过SPSS处理部分数据得到的结果如下图：
+%			\begin{figure}[h]
+%				\centering %图片居中显示
+%				\includegraphics{1_偏度与峰度}
+%				\caption{偏度与峰度}
+%			\end{figure}
+			\item P-P图和Q-Q图
+			
+			P-P图反映了变量的实际累积概率与理论累积概率的符合程度，Q-Q图反映了变量的实际分布与理论分布的符合程度。若数据点与理论直线（即对角线）基本重合，就认为数据服从正态分布。
+			通过SPSS处理部分数据得到的结果如下图：
+%			\begin{figure}[tbp]
+%				\centering
+%				\subfloat[Arabicnumerals]{\label{fig:a}\includegraphics[width=1in]{1_pp}}\quad
+%				\subfloat[Arabicnumerals]{\label{fig:b}\includegraphics[width=1in]{1_qq}}\\	
+%				\caption{}
+%			\end{figure}
+			
+		\end{enumerate}
+	\end{itemize}
+	\subsubsection{模型求解}
 		\begin{table}[!ht]
 			\caption{工位CJ1的疫苗生产水平}\label{}
 			\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }
@@ -176,12 +228,10 @@
 			\end{tabular*}
 		\end{table}
 	
-	\subsubsection{3}
-	
 	\subsection{问题二}
-	\subsubsection{1}
-	\subsubsection{2}
-	\subsubsection{3}
+	\subsubsection{模型建立}
+	\subsubsection{模型求解}
+	\subsubsection{模型分析}
 	
 	\subsection{问题三}
 	\subsubsection{1}
