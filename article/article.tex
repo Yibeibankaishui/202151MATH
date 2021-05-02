@@ -13,9 +13,12 @@
 }
 \pagestyle{empty}
 \usepackage{graphicx}
+\usepackage{graphicx}
+\usepackage{subfigure}
 \usepackage{appendix}
 \usepackage{setspace}
 \usepackage{url}
+\usepackage{booktabs}
 \usepackage{geometry}
 \geometry{left=3.18cm,right=3.18cm,top=2.54cm,bottom=2.54cm}
 
@@ -71,11 +74,105 @@
 	\end{enumerate}
 	
 	\section{定义和符号说明}
+%	\begin{table}[!ht]
+%		\caption{定义和符号说明表}\label{}
+%		\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}} c c}
+%			\toprule[2pt]
+%			符号 & 说明   \\
+%			\hline
+%			&    \\
+%			&    \\
+%			&    \\
+%			\bottomrule[2pt]			
+%		\end{tabular*}		
+%	\end{table}
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{ c c }
+			\toprule[2pt]
+			符号 & 说明   \\
+			\hline
+			1 & 2  \\
+			  &   \\
+			  &   \\
+			\bottomrule[2pt]
+		\end{tabular}\caption{表格标题}\label{p1}
+	\end{table}
 	
 	\section{模型建立、求解和分析}
 	\subsection{问题一}
 	\subsubsection{1}
 	\subsubsection{2}
+
+		\begin{table}[!ht]
+			\caption{工位CJ1的疫苗生产水平}\label{}
+			\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }
+				\toprule[2pt]
+				      & YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\
+				\hline
+				
+				均值  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
+				
+				方差  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	   \\
+				
+				最小值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	  \\
+				
+				最大值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
+				\bottomrule[2pt]			
+			\end{tabular*}
+		\end{table}
+		\begin{table}[!ht]
+			\caption{工位CJ2的疫苗生产水平}\label{}
+			\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }
+				\toprule[2pt]
+				& YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\
+				\hline
+				
+				均值  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
+				
+				方差  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	   \\
+				
+				最小值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	  \\
+				
+				最大值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
+				\bottomrule[2pt]			
+			\end{tabular*}
+		\end{table}
+		\begin{table}[!ht]
+			\caption{工位CJ3的疫苗生产水平}\label{}
+			\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }
+				\toprule[2pt]
+				& YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\
+				\hline
+				
+				均值  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
+				
+				方差  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	   \\
+				
+				最小值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	  \\
+				
+				最大值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
+				\bottomrule[2pt]			
+			\end{tabular*}
+		\end{table}
+		\begin{table}[!ht]
+			\caption{工位CJ4的疫苗生产水平}\label{}
+			\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }
+				\toprule[2pt]
+				& YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\
+				\hline
+				
+				均值  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
+				
+				方差  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	   \\
+				
+				最小值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	  \\
+				
+				最大值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
+				\bottomrule[2pt]			
+			\end{tabular*}
+		\end{table}
+	
 	\subsubsection{3}
 	
 	\subsection{问题二}
