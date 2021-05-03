@@ -297,6 +297,7 @@
 	在统计分析中，我们采用数据表格和曲线图像两种方式，定性和定量地全面分析了不同工位对不同疫苗的生产能力水平，有利于直观明了地掌握掌握工位生产疫苗的能力水平，为疫苗生产提供参考。
 	
 	\subsection{问题二}
+	\subsubsection{对生产过程的分析}
 	\subsubsection{模型建立}
 	从整体来看，本题所有问题属于流水线平衡和优化问题，均可分为优化算法和平衡目标两大方面。%基于 0 － 1 规划的成衣制造流水线平衡建模与仿真
 	平衡目标即我们规范设置的满足约束条件的目标函数，属于模型建立，而优化算法则是我们求解目标函数的算法，是模型求解的主要内容。
@@ -487,16 +488,19 @@
 	T_{\Sigma}\sim\mathcal{N}(\mu_{\Sigma},\sigma_{\Sigma})
 	\end{equation}
 	我们求出其正态分布的参数
-	$\mu_{\Sigma}=\sum_{i,j}\alpha_{ij}\mu_{ij}$,$\sigma_{\Sigma}=\sum_{i,j}\alpha_{ij}\sigma_{ij}$
+	\begin{equation}
+		\mu_{\Sigma}=\sum_{i,j}\alpha(i,j)\mu(i,j),\sigma_{\Sigma}^{2}=\sum_{i,j}\alpha(i,j)\sigma^{2}(i,j)
+	\end{equation}
 	\begin{itemize}
 	\item 决策变量
 	\par 决策变量与问题2一致
 	\item 约束条件
 	\item 目标函数
-	\par 本问题的目标是使得概率最大
+	\par 本问题的目标是使得概率最大。可以用概率分布函数求出。
 	\begin{equation}
         	\begin{split}
-        	\max P(T_{\Sigma}<0.95T_{\min})
+        	\max P(T_{\Sigma}<0.95T_{\min})&=F(x)|_{x=0.95T_{\min}}\\
+			&=\frac{1}{\sqrt{2\pi}\sigma}\int^{x}_{-\infty}e^{-\frac{(t-\mu)^2}{2\sigma^2}}dt|_{x=0.95T_{\min}}
         	\end{split}
 	\end{equation}
 	\item 总体模型
@@ -535,13 +539,33 @@
 	这个百分比和优先级作为求另一个参数销售值的约束条件，采用模拟退火算法求解。
 	
 	建立优化模型如下：
-	
+	\begin{itemize}
+	\item 决策变量
+	\par 决策变量为各类疫苗的产量
+	\begin{equation}
+		N={n_{1},n_{2},\dots,n_{10}}
+	\end{equation}
+	\item 目标函数
+	\par 线性规划的优化目标是使得销售额最大。
+	\begin{equation}
+		M=\sum_{i}n_{i}m_{i}
+	\end{equation}
+	\item 约束条件
+	\par 在假定无等待时间的情况下，每个工位的生产时间应小于100天。即
+	\begin{equation}
+	\begin{split}
+		&\sum_{i}n_{i}t(i,1)\leqslant T_{1\max}\\
+		&\sum_{i}n_{i}t(i,2)\leqslant T_{2\max}\\
+		&\sum_{i}n_{i}t(i,3)\leqslant T_{3\max}\\
+		&\sum_{i}n_{i}t(i,4)\leqslant T_{4\max}\\
+	\end{split}
+	\end{equation}
+	\item 优化模型
+	\end{itemize}
 	目标函数为销售额$M$
 	
 	每个疫苗的最大产量不超过任务数量
-	\begin{equation}
-	M=\sum_{i}n_{i}m_{i}
-	\end{equation}
+
 	不考虑随机性，将均值即为每种疫苗的生产用时。总时间为
 	\begin{equation}
 	T=\sum_{i}n_{i}t_{i}
