@@ -10,6 +10,7 @@ var_row = std_row.^2;
 avg = reshape(avg_row,[4,10]);
 var = reshape(var_row,[4,10]);
 N=[10,5,8,2,4,6,7,9,3,1];
+
 [best_solution,best_fit,iter,nice] = mySa3(N,0.99,120,1,10000,avg,var);
 %Nal_dis( var_row,avg_row );
 
