@@ -148,7 +148,6 @@
 	
 	\section{模型建立、求解和分析}
 	\subsection{问题一}
-	
 	\subsubsection{数据的正态性检验}
 	\begin{itemize}
 		\item 偏度和峰度
@@ -481,71 +480,6 @@
 	\end{equation}
 	\subsubsection{模型求解}
 	我们首先求得在既定生产顺序下
-	
-	本题模拟退火算法的步骤：
-	\begin{enumerate}
-		\item 解空间和初始解：算法的每一个解为十种类型疫苗的不同排列
-		\begin{equation}
-		S=\{(x_1,x_2,\dots,x_{10})|x_{i}\in[YM1,YM2,\dots,YM10],x_{i}\neq x_{j}\}
-		\end{equation}
-		其中$x_{i}$表示第$i$个被生产的疫苗编号。
-		
-		\qquad 本模型中初始解为随机生成的生产顺序序列$S_{0}$。$S_{0}$经验证满足所有约束条件。
-		
-		\item 目标函数：
-		\begin{equation*}
-		f = \min T_{\Sigma}
-		\end{equation*}
-		
-		\item 邻解生成：
-		
-		\qquad 邻解为不同于当前的生产顺序序列，本题中采取对当前序列进行随机性简单变换。70\%可能随机将序列中的两个疫苗生产顺序互换，30\%对三个生产顺序互换。
-		
-		\item 目标函数差值降温接收准则：
-		
-		\qquad 新解产生，经过目标函数得到新的总时间$ T_{new} $
-		
-		\qquad 如果$ \Delta t = T_{new} - T_{0}  \textless 0 $ ，则接受 $   T_{new}$ 作为新的当前解 $ T_{now} $
-		
-		\qquad 否则以概率 $exp \left( -\Delta t/ T\right)$接受 $   T_{new}$ 作为新的当前解 $ T_{now} $。
-		
-		\item 降温：
-		
-		\qquad 利用选定的降温系数$\alpha$进行降温，每次解更新降温一次：
-		\begin{equation*}
-		T \gets \alpha
-		\end{equation*}
-		
-		\item 参数设定：
-		
-		\qquad 我们设定初始温度
-		\begin{equation*}
-		T_{0} = 120
-		\end{equation*}
-		
-		\qquad 最终温度
-		\begin{equation*}
-		T_{f} = 1
-		\end{equation*}
-		
-		\qquad 温度衰减系数$ \alpha = 0.99 $，即：
-		\begin{equation*}
-		T^{'} = 0.99 T
-		\end{equation*}
-		
-		\qquad Markov马尔科夫链长度
-		\begin{equation*}
-		L_{Markov} = 10000
-		\end{equation*}
-		
-		\qquad 用 MATLAB编写模拟退火算法对问题进行求解，得到以下进化曲线：
-		\begin{figure}[H]
-			\centering %图片居中显示
-			\includegraphics[scale=0.5]{2_moni.jpg}
-			\caption{模拟退火算法目标函数迭代曲线}
-		\end{figure}
-		
-		最终得出的最优解为$ T_{min} = 187.8657 $
 	以最大的概率完成这个任务，生产的最优顺序为
 	\subsubsection{3}
 	
@@ -588,71 +522,7 @@
 	线性规划
 	模拟退火算法
 	\subsubsection{模型求解}
-	本题模拟退火算法的步骤：
-	\begin{enumerate}
-		\item 解空间和初始解：算法的每一个解为十种类型疫苗的不同排列
-		\begin{equation}
-		S=\{(x_1,x_2,\dots,x_{10})|x_{i}\in[YM1,YM2,\dots,YM10],x_{i}\neq x_{j}\}
-		\end{equation}
-		其中$x_{i}$表示第$i$个被生产的疫苗编号。
-		
-		\qquad 本模型中初始解为随机生成的生产顺序序列$S_{0}$。$S_{0}$经验证满足所有约束条件。
-		
-		\item 目标函数：
-		\begin{equation*}
-		f = \min T_{\Sigma}
-		\end{equation*}
-		
-		\item 邻解生成：
-		
-		\qquad 邻解为不同于当前的生产顺序序列，本题中采取对当前序列进行随机性简单变换。70\%可能随机将序列中的两个疫苗生产顺序互换，30\%对三个生产顺序互换。
-		
-		\item 目标函数差值降温接收准则：
-		
-		\qquad 新解产生，经过目标函数得到新的总时间$ T_{new} $
-		
-		\qquad 如果$ \Delta t = T_{new} - T_{0}  \textless 0 $ ，则接受 $   T_{new}$ 作为新的当前解 $ T_{now} $
-		
-		\qquad 否则以概率 $exp \left( -\Delta t/ T\right)$接受 $   T_{new}$ 作为新的当前解 $ T_{now} $。
-		
-		\item 降温：
-		
-		\qquad 利用选定的降温系数$\alpha$进行降温，每次解更新降温一次：
-		\begin{equation*}
-		T \gets \alpha
-		\end{equation*}
-		
-		\item 参数设定：
-		
-		\qquad 我们设定初始温度
-		\begin{equation*}
-		T_{0} = 120
-		\end{equation*}
-		
-		\qquad 最终温度
-		\begin{equation*}
-		T_{f} = 1
-		\end{equation*}
-		
-		\qquad 温度衰减系数$ \alpha = 0.99 $，即：
-		\begin{equation*}
-		T^{'} = 0.99 T
-		\end{equation*}
-		
-		\qquad Markov马尔科夫链长度
-		\begin{equation*}
-		L_{Markov} = 10000
-		\end{equation*}
-		
-		\qquad 用 MATLAB编写模拟退火算法对问题进行求解，得到以下进化曲线：
-		\begin{figure}[H]
-			\centering %图片居中显示
-			\includegraphics[scale=0.5]{2_moni.jpg}
-			\caption{模拟退火算法目标函数迭代曲线}
-		\end{figure}
-		
-		最终得出的最优解为$ T_{min} = 187.8657 $
-		
+	修改2的模拟退火算法
 	\subsubsection{3}
 	
 	\section{模型评价}
