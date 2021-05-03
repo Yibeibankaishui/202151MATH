@@ -285,14 +285,8 @@
 	
 	\begin{figure}[H]
 		\centering %图片居中显示
-		\includegraphics[scale=0.5]{1_zhengtai.jpg}
-		\caption{概率分布曲线}
-	\end{figure}
-	
-	\begin{figure}[H]
-		\centering %图片居中显示
-		\includegraphics[scale=0.5]{2_xiangxing.jpg}
-		\caption{箱型图}
+		\includegraphics[scale=0.5]{箱型图new.jpg}
+		\caption{四个工位生产每种疫苗用时分布的箱型图}
 	\end{figure}
 	在统计分析中，我们采用数据表格和曲线图像两种方式，定性和定量地全面分析了不同工位对不同疫苗的生产能力水平，有利于直观明了地掌握掌握工位生产疫苗的能力水平，为疫苗生产提供参考。
 	
@@ -586,7 +580,7 @@
 	用matlab的线性规划函数求得产量结果如下表所示
 	\begin{table}[H]
 		\centering
-		\caption{线性规划结果}
+		\caption{线性规划结果}\label{chanliang1}
 		\begin{tabular}{ c| c| c |c|c|c|c|c|c|c|c}
 			\hline
 			疫苗 & YM1 & YM2 & YM3 & YM4 & YM5 & YM6 & YM7 & YM8 & YM9 & YM10 \\
@@ -615,7 +609,19 @@
 	以一箱100个疫苗为基本单位
 	\par 此问题的模拟退火算法与问题2类似，但是解空间不同。将每一箱作为排列中的每个元素，此时的解空间为66箱疫苗的排列$\boldsymbol{x}=(x_{1},x_{2},\dots,x_{66})$，排列中同一种疫苗根据产量比例可出现多次，即$\sum_{k}^{66}\boldsymbol{I}(x_{k}=$YM$i)=c_{i}$
 	\par 求得生产顺序为()
-	\par 每种疫苗的生产量为
+	\par 每种疫苗的生产量如表\ref{chanliang2}所示，
+	\begin{table}[H]	
+		\centering
+		\caption{每种疫苗的总产量}\label{chanliang2}
+		\begin{tabular}{ c| c| c |c|c|c|c|c|c|c|c}
+			\hline
+			疫苗 & YM1 & YM2 & YM3 & YM4 & YM5 & YM6 & YM7 & YM8 & YM9 & YM10 \\
+			\hline
+			 产量/剂 & 0 & 490 & 588 & 0 & 1176 & 1470 & 588 & 784 & 588 & 784 \\
+			 \hline
+		\end{tabular}
+	\end{table}
+	对比表\ref{chanliang2}和表\ref{chanliang1}可知，最终优化了生产顺序的产量结果略小于忽略等待时间的结果。其最大销售额为
 	
 	
 	\section{模型评价}
