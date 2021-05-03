@@ -108,7 +108,7 @@
 		$M$ & 销售额 & \\
 		$m_{i}$ & 疫苗$i$的单价 & \\
 		$n_{i}$ & 疫苗$i$的产量 & \\
-		$X_{k}$& 按顺序第$k$个被生产的疫苗& \\
+		$x_{k}$& 按顺序第$k$个被生产的疫苗& \\
 		$\Omega_{in}(k,j)$& 第$k$个疫苗进入CJ$j$的时刻 & \\
 		$\Omega_{out}(k,j)$& 第$k$个疫苗离开CJ$j$的时刻 & \\
 		
@@ -289,6 +289,11 @@
 		\caption{概率分布曲线}
 	\end{figure}
 	
+	\begin{figure}[H]
+		\centering %图片居中显示
+		\includegraphics[scale=0.5]{2_xiangxing.jpg}
+		\caption{箱型图}
+	\end{figure}
 	在统计分析中，我们采用数据表格和曲线图像两种方式，定性和定量地全面分析了不同工位对不同疫苗的生产能力水平，有利于直观明了地掌握掌握工位生产疫苗的能力水平，为疫苗生产提供参考。
 	
 	\subsection{问题二}
@@ -304,7 +309,7 @@
 	\begin{equation}
 		\Omega_{in}(k,j)\geqslant\Omega_{out}(k-1,j)
 	\end{equation}
-	每个工位不能同时生产不同类型的疫苗，且生产不允许插队。可以表示为：
+	每个工位不能同时生产不同类型的疫苗，且生产不允许插队。一种疫苗一离开上一工位即进入下一工位，可以表示为：
 	\begin{equation}
 		\Omega_{in}(k,j)=\Omega_{out}(k,j-1)
 	\end{equation}
@@ -316,12 +321,6 @@
 	\begin{equation}
 		t(k,j)=\mu(x_{k},j)
 	\end{equation}
-	\begin{equation}
-		\begin{split}
-		\min \quad&T_{\Sigma}=\Omega_{out}(10,4)-\Omega_{in}(1,1)\\
-		&s.t. 
-		\end{split}
-	\end{equation}
 	有如下关系：
 	\begin{equation}
 		\Omega_{out}(k,j)=\max\{\Omega_{in}(k,j)+t(k,j),\Omega_{out}(k-1,j+1)\}
@@ -332,14 +331,16 @@
 		\label{eq8}
 	\end{equation}
 	总时间的求解算法，总时间$T_{\Sigma}$可以依据式\ref{eq7}、式\ref{eq8}递归求得
+	$\boldsymbol{x}=(x_{1},x_{2},\dots,x_{10})$表示10种疫苗的生产顺序排列，其中一个元素$x_{k}$表示第$k$个被生产的疫苗，其值$x_{k}\in$(YM1,YM2,$\dots$,YM10)。总体的优化模型如下：
+	\begin{equation}
+		\begin{split}
+		\min \quad&T_{\Sigma}(\boldsymbol{x})=\Omega_{out}(10,4)-\Omega_{in}(1,1)\\
+		&s.t. 
+		\end{split}
+	\end{equation}
+
 	
 	为方便理解和求解总时间，我们通过下图，模拟某次确定顺序生产的时间流动。
-
-	\begin{figure}[H]
-		\centering %图片居中显示
-		\includegraphics[scale=0.5]{2_xiangxing.jpg}
-		\caption{箱型图}
-	\end{figure}
 
 	从图可以看出，总时间可以用工位CJ4的总时间计算，即工位CJ4的生产时间加其等待时间。而工位CJ4的等待时间又和工位CJ3的生产时间和等待时间有关。如此，问题由通过循环和判断构成。我们结合求每个工位当前总时间的循环语句和疫苗进入每个工位时前后工位总时间的大小的判断语句，构造出符合题意的function[t]。
 	
@@ -414,7 +415,7 @@
 			\caption{模拟退火算法目标函数迭代曲线}
 		\end{figure}
 
-	最终得出的最优解为$ T_{min} = 187.8657 $
+	最终得出的最优解为$ T_{\min} = 187.8657 $
 	
 	相对应的疫苗生产顺序如表所示：
 	\begin{table}[H]
@@ -532,7 +533,9 @@
 	\subsubsection{3}
 	
 	\section{模型评价}
-	
+	\subsection{模型的优点}
+	\subsection{模型的不足}
+	\subsection{模型改进}
 	
 	\section{参考文献}
 	%	\begin{thebibliography}{9}%宽度9
