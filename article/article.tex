@@ -291,20 +291,20 @@
 	\end{equation}
 	疫苗在一个工位上生产完才可离开，即：
 	\begin{equation}
-		\Omega_{out}(k,j)\geqslant\Omega_{in}(k,j)+t(
+		\Omega_{out}(k,j)\geqslant\Omega_{in}(k,j)+t(k,j)
 	\end{equation}
 	\begin{equation}
 		\begin{split}
-		\min &T=\Omega_{out}(10,4)-\Omega_{in}(1,1)\\
+		\min \quad&T_{\Sigma}=\Omega_{out}(10,4)-\Omega_{in}(1,1)\\
 		&s.t. 
 		\end{split}
 	\end{equation}
 	有如下关系：
 	\begin{equation}
-		\Omega_{out}
+		\Omega_{out}(k,j)=\max\{\Omega_{in}(k,j)+t(k,j),\Omega_{out}(k-1,j+1)\}
 	\end{equation}
 	\begin{equation}
-			aa
+		\Omega_{in}(k,j)=\max\{\Omega_{out}(k-1,j),\Omega_{out}(k,j-1)\}
 	\end{equation}
 	总时间的求解算法，总时间$T_{\Sigma}$可以递归求得
 	\subsubsection{模型求解}
