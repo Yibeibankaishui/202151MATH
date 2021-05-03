@@ -25,7 +25,7 @@
 \usepackage{url}
 \usepackage{booktabs}
 \usepackage{geometry}
-\geometry{left=3.18cm,right=3.18cm,top=2.54cm,bottom=2.54cm}
+\geometry{left=3cm,right=3cm,top=2.54cm,bottom=2.54cm}
 
 \linespread{1.3}
 
@@ -215,71 +215,7 @@
 	2. 用MATLAB进行统计分析
 	
 	在MATLAB中使用求平均数、方差、最值的函数对输入数据的矩阵逐行处理并储存，结果如表2-5显示，结果定量地体现了每个工位对10种疫苗不同的生产水平，对疫苗生产具有重要参考价值。
-	
-	\begin{table}[!ht]
-		\caption{工位CJ1的疫苗生产水平}\label{}
-		\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }
-			\toprule[2pt]
-			& YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\
-			\midrule[1pt]
-			均值  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
-			
-			方差  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	   \\
-			
-			最小值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	  \\
-			
-			最大值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
-			\bottomrule[2pt]			
-		\end{tabular*}
-	\end{table}
-	\begin{table}[!ht]
-		\caption{工位CJ2的疫苗生产水平}\label{}
-		\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }
-			\toprule[2pt]
-			& YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\
-			\midrule[1pt]
-			均值  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
-			
-			方差  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	   \\
-			
-			最小值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	  \\
-			
-			最大值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
-			\bottomrule[2pt]			
-		\end{tabular*}
-	\end{table}
-	\begin{table}[!ht]
-		\caption{工位CJ3的疫苗生产水平}\label{}
-		\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }
-			\toprule[2pt]
-			& YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\
-			\midrule[1pt]
-			均值  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
-			
-			方差  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	   \\
-			
-			最小值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	  \\
-			
-			最大值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
-			\bottomrule[2pt]			
-		\end{tabular*}
-	\end{table}
-	\begin{table}[!ht]
-		\caption{工位CJ4的疫苗生产水平}\label{}
-		\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }
-			\toprule[2pt]
-			& YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\
-			\midrule[1pt]
-			均值  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
-			
-			方差  &      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	   \\
-			
-			最小值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	  \\
-			
-			最大值&      &       & 	  & 	  & 	  & 	   & 	  & 	  & 	 & 	 \\
-			\bottomrule[2pt]			
-		\end{tabular*}
-	\end{table}
+\begin{table}[!ht]		\caption{工位CJ1的疫苗生产水平}\label{1tou}		\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }			\toprule[2pt]			& YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\			\hline			均值  &   13.284   &   9.870  & 	20.058  & 	7.988  & 	8.770  & 	 19.074  & 	11.160  & 	16.020  & 	15.014 & 	12.952 \\						方差  &    1.593  &	0.833   &	0.844   &	0.932  &	0.745  &	1.334    &	1.026       &	1.131   &	0.973  &	0.207    \\						最小值&10.055&	6.970&	17.814&	5.872&	5.927&	16.435&	8.843&	13.575&	12.823&	11.463\\						最大值&16.578&	11.682&	21.814&	10.038&	10.384&	21.752&	13.287&	18.078&	17.412&	13.618\\			\bottomrule[2pt]					\end{tabular*}	\end{table}	\begin{table}[!ht]		\caption{工位CJ2的疫苗生产水平}\label{}		\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }			\toprule[2pt]			& YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\			\hline			均值  &   14.962  &   19.907    & 	15.972  & 9.936	  & 	13.722  & 	20.094   & 	16.496  & 	8.827  & 12.035	 & 7.011	 \\						方差  &   1.0830   &	1.252    &	0.693   &	0.953    &	1.139       &	0.973    &	0.929       &	0.261  &	1.158   &	0.282   \\						最小值&13.067&	17.513&	13.978&	7.640&	11.796&	17.500&	14.680&	7.967&	10.093&	5.950\\						最大值&17.585&	22.229&	17.809&	12.508&	16.605&	21.927&	18.730&	10.187&	14.748&	8.579\\			\bottomrule[2pt]					\end{tabular*}	\end{table}	\begin{table}[!ht]		\caption{工位CJ3的疫苗生产水平}\label{}		\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }			\toprule[2pt]			& YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\			\hline			均值  &   19.846   &   17.928    & 	14.970  & 	5.935  & 	13.005  & 	 14.148  & 	12.013  & 	18.114  & 7.041	 & 	9.049 \\						方差  &   1.187    &	0.902	   &	1.040   &	0.037 &	0.831   &	0.875    &	0.786       &	1.070   &	0.133   &	0.207 \\						最小值& 17.861&	15.503&	12.671&	5.3536&	10.798&	12.090&	9.652&	16.315&	6.231&	7.974 \\						最大值&22.908&	20.177&	17.787&	6.3889&	15.010&	15.813&	14.436&	21.569&	7.994&	9.817\\			\bottomrule[2pt]					\end{tabular*}	\end{table}	\begin{table}[!ht]		\caption{工位CJ4的疫苗生产水平}\label{1wei}		\begin{tabular*}{\hsize}{@{}@{\extracolsep{\fill}}c|c|c|c|c|c|c|c|c|c|c }			\toprule[2pt]			& YM1 & 	YM2 & 	YM3 & 	YM4 & 	YM5 & 	YM6 & 	YM7 & 	YM8 & 	YM9 & 	YM10  \\			\hline			均值  &   20.012   &   18.942    & 	15.116  & 	18.128  & 	11.249  & 	 13.883  & 	19.087  & 	16.831  & 8.949	 & 	16.052 \\						方差  &  1.889     &	0.890     &	0.812   &	1.127   &	1.230   &	1.151   &	0.656       &	0.912   &	0.175   &	0.263 \\						最小值& 16.505&	17.164&	12.806&	16.043&	9.231&	11.724&	16.740&	14.747&	8.108&	14.950 \\						最大值&23.789&	21.424&	17.003&	20.789&	14.526&	16.949&	20.755&	18.735&	9.898&	17.487\\			\bottomrule[2pt]					\end{tabular*}	\end{table}
 	
 	对于概率分析，经正态性检验可知，数据服从正态分布，由均值和方差我们可以画出每组数据的正态分布曲线，近似于数据本身的概率分布曲线。结果如图显示。从概率分布曲线我们可以更宏观且直观地了解每个工位生产疫苗的能力水平。
 	
@@ -298,7 +234,7 @@
 		\includegraphics[scale=0.5]{pipe1.pdf}
 		\caption{生产过程示意图}\label{pipeline1}
 	\end{figure}
-	由图\ref{pipeline1}可知，后续工位在生产过程中，由于下一疫苗还未完成在前一工位的生产，因此会有等待时间$T_{W}$。用$\Omega_{in}(k,j)$、$\Omega_{out}(k,j)$分别表示顺序第$k$位的疫苗进入和退出工位CJ$j$的时刻。则总时间$T_{\Sigma}$可以表示为$T_{\Sigma}。(\boldsymbol{x})=\Omega_{out}(10,4)-\Omega_{in}(1,1)$
+	由图\ref{pipeline1}可知，后续工位在生产过程中，由于下一疫苗还未完成在前一工位的生产，因此会有等待时间$T_{W}$（灰色区块）。用$\Omega_{in}(k,j)$、$\Omega_{out}(k,j)$分别表示顺序第$k$位的疫苗进入和退出工位CJ$j$的时刻。则总时间$T_{\Sigma}$可以表示为$T_{\Sigma}。(\boldsymbol{x})=\Omega_{out}(10,4)-\Omega_{in}(1,1)$
 	\subsubsection{模型建立}
 %	从整体来看，本题所有问题属于流水线平衡和优化问题，均可分为优化算法和平衡目标两大方面。%基于 0 － 1 规划的成衣制造流水线平衡建模与仿真
 %	平衡目标即我们规范设置的满足约束条件的目标函数，属于模型建立，而优化算法则是我们求解目标函数的算法，是模型求解的主要内容。
@@ -376,6 +312,7 @@
 		\label{linear}
 	\end{split}
 	\end{equation}
+	$\alpha(i,j)$的值随着生产顺序的不同而不同，从而改变总时间。由于$\alpha(i,j)$与顺序的关系是非线性的，因此本题目标函数仍为非线性。
 	\par 对于这样一个非线性优化问题，需要在解空间搜索最优解。本题若采取暴力求解算法，需要遍历10！个解得到对应的总时间再比较，不具有实际性和通用性。因此需要使用算法减少遍历次数。
 	本问题属于非线性最优化问题，其目标函数难以显式表达，因此采用启发式算法求近似最优解。这里我们选用模拟退火算法。 
 	\par 模拟退火算法是一种通用概率启发式算法，用来在一个大的搜寻空间内寻找问 题的最优解。本问题的目标是求出饲料质量即总亲缘度最高的原料混合分配方案。 模拟退火算法具有高效、鲁棒、通用、灵活的优点，因而利用模拟退火可以避免在 求解过程中陷入局部最优。
@@ -487,52 +424,37 @@
 	
 	\subsection{问题三}
 	\subsubsection{模型建立}
-	本问题与问题二的差别在于时间的随机性和目标函数的不同。
+	与问题二相比，需要改变目标函数并考虑随机性。
 	\par 考虑生产用时的随机性，每个工位生产每种疫苗的所需时间$T(i,j)$均符合正态分布，即
 	\begin{equation}
 	T(i,j)\sim\mathcal{N}(\mu(i,j),\sigma^2(i,j))
 	\end{equation}
 	%插入图，流水线
-	
-	虽然每个工位生产每种疫苗的耗时有随机性，但是其大小对比关系基本不变。因此我们用均值
 	\par 由式\ref{linear}可知，总用时是$t(k,j)$的线性组合。由于
 	\begin{equation}
 	t(k,j)=T(x_{k},j)\sim\mathcal{N}(\mu(x_{k},j),\sigma^2(x_{k},j))
 	\end{equation}
-	由定理。   因此总用时$T_{\Sigma}$也符合正态分布。即
+	结合定理1，可知总用时$T_{\Sigma}$也符合正态分布。即
 	\begin{equation}
 	T_{\Sigma}\sim\mathcal{N}(\mu_{\Sigma},\sigma_{\Sigma})
 	\end{equation}
-	由定理       我们可以求出其正态分布的参数
+	由定理2，可以求出其正态分布的参数
 	\begin{equation}
 		\mu_{\Sigma}=\sum_{i,j}\alpha(i,j)\mu(i,j),\sigma_{\Sigma}^{2}=\sum_{i,j}\alpha(i,j)\sigma^{2}(i,j)
 		\label{all}
 	\end{equation}
-	\begin{itemize}
-	\item 决策变量
-	\par 决策变量与问题2一致，$\boldsymbol{x}=(x_{1},x_{2},\dots,x_{10})$
-	\item 约束条件
-	\par 约束条件不变
-	\item 目标函数
 	\par 设问题2求出的最短时间为$T_{\min}$，本问题的目标是使得$T_{\Sigma}<0.95T_{\min}$的概率最大。可以用概率分布函数求出。
 	\begin{equation}
         	\begin{split}
-        	\max P&=F(x)|_{x=0.95T_{\min}}\\
-			&=\frac{1}{\sqrt{2\pi}\sigma}\int^{x}_{-\infty}e^{-\frac{(t-\mu)^2}{2\sigma^2}}dt|_{x=0.95T_{\min}}
+        	\max P(T_{\Sigma}<0.95T_{\min})&=F_{\Sigma}(x)|_{x=0.95T_{\min}}\\
+			&=\frac{1}{\sqrt{2\pi}\sigma_{\Sigma}}\int^{x}_{-\infty}\exp[{-\frac{(t-\mu_{\Sigma})^2}{2\sigma_{\Sigma}^2}}]dt\arrowvert_{x=0.95T_{\min}}
         	\end{split}
 		\label{pr}
 	\end{equation}
-	\item 总体模型
-	\end{itemize}
-	\par 建立优化模型：
-	\begin{equation}
-	\begin{split}
-	\max P(T_{\Sigma}<0.95T_{\min})
-	\end{split}
-	\end{equation}
+
 	\subsubsection{模型求解}
-	用模拟退火算法求解
-	\par 以最大的概率完成这个任务，生产的最优顺序为
+	在问题二中，由于生产耗时固定，因而在生产顺序也确定的情况下，$T_{\Sigma}$表达式中的系数$\alpha(i,j)$都可确定。而本题虽然每个工位生产每种疫苗的耗时有随机性，但是其大小对比关系基本不变。因此也可以认为在生产顺序固定的情况下其系数$\alpha(i,j)$均确定。
+	改变评价函数为概率值，用模拟退火算法求解。得到使概率最大的生产的最优顺序为
 	\begin{equation}
 		\boldsymbol{x}^{*}=(YM4,YM10,YM7,YM8,YM2,YM9,YM1,YM5,YM3,YM6)
 	\end{equation}
@@ -546,6 +468,11 @@
 	\end{equation}
 	再由式\ref{pr}，可以求得最大概率为$P_{\max}=24.79\%$，
 	\par 在确定生产顺序的情况下，缩短的时间比例$\delta$与最大概率之间的关系为
+	\begin{equation}
+	\begin{split}
+		P_{\max}=f(\delta)=\frac{1}{\sqrt{2\pi}\cdot3.728}\int^{(1-\delta)T_{\min}}_{-\infty}\exp[{-\frac{(t-185)^2}{2\cdot(3.728)^2}}]dt
+	\end{split}
+	\end{equation}
 	
 	\subsection{问题四}
 	\subsubsection{模型描述与假设}
