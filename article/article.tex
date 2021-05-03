@@ -302,30 +302,36 @@
 	
 	前一种类型的疫苗离开某个工位后，后一种类型的疫苗才能进入这个工位。即后一疫苗进入此工位的时刻应大于前一疫苗离开的时刻。即：
 	\begin{equation}
-	\Omega_{in}(k,j)\geqslant\Omega_{out}(k-1,j)
+		\Omega_{in}(k,j)\geqslant\Omega_{out}(k-1,j)
 	\end{equation}
 	每个工位不能同时生产不同类型的疫苗，且生产不允许插队。可以表示为：
 	\begin{equation}
-	\Omega_{in}(k,j)=\Omega_{out}(k,j-1)
+		\Omega_{in}(k,j)=\Omega_{out}(k,j-1)
 	\end{equation}
 	疫苗在一个工位上生产完才可离开，即：
 	\begin{equation}
-	\Omega_{out}(k,j)\geqslant\Omega_{in}(k,j)+t(k,j)
+		\Omega_{out}(k,j)\geqslant\Omega_{in}(k,j)+t(k,j)
+	\end{equation}
+	不考虑每个疫苗在每个工位上生产耗时的随机性，可以确定其值为平均值，即：
+	\begin{equation}
+		t(k,j)=\mu(x_{k},j)
 	\end{equation}
 	\begin{equation}
-	\begin{split}
-	\min \quad&T_{\Sigma}=\Omega_{out}(10,4)-\Omega_{in}(1,1)\\
-	&s.t. 
-	\end{split}
+		\begin{split}
+		\min \quad&T_{\Sigma}=\Omega_{out}(10,4)-\Omega_{in}(1,1)\\
+		&s.t. 
+		\end{split}
 	\end{equation}
-	满足约束条件有如下关系：
+	有如下关系：
 	\begin{equation}
-	\Omega_{out}(k,j)=\max\{\Omega_{in}(k,j)+t(k,j),\Omega_{out}(k-1,j+1)\}
+		\Omega_{out}(k,j)=\max\{\Omega_{in}(k,j)+t(k,j),\Omega_{out}(k-1,j+1)\}
+		\label{eq7}
 	\end{equation}
 	\begin{equation}
-	\Omega_{in}(k,j)=\max\{\Omega_{out}(k-1,j),\Omega_{out}(k,j-1)\}
+		\Omega_{in}(k,j)=\max\{\Omega_{out}(k-1,j),\Omega_{out}(k,j-1)\}
+		\label{eq8}
 	\end{equation}
-	总时间的求解算法，总时间$T_{\Sigma}$可以递归求得
+	总时间的求解算法，总时间$T_{\Sigma}$可以依据式\ref{eq7}、式\ref{eq8}递归求得
 	
 	为方便理解和求解总时间，我们通过下图，模拟某次确定顺序生产的时间流动。
 
