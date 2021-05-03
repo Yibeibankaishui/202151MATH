@@ -1,30 +1,30 @@
-%æ¨¡æ‹Ÿé€€ç«
-function [best_solution,best_fit,iter,pkq] = mySa(solution,a,t0,tf,Markov,avg)
-% ===== è¾“å…¥ ======%
-% solution åˆå§‹è§£ 
-% a æ¸©åº¦è¡°å‡ç³»æ•° 0.99
-% t0 åˆå§‹æ¸©åº¦ 120
-% tf æœ€ç»ˆæ¸©åº¦ 1
-% Markov é©¬å°”ç§‘å¤«é“¾é•¿åº¦ 10000
-% ====== è¾“å‡º =====%
-% best_solution æœ€ä¼˜è§£
-% best_fit æœ€ä¼˜è§£ç›®æ ‡å€¼
-% iter è¿­ä»£æ¬¡æ•°
+%Ä£ÄâÍË»ğ
+function [best_solution,best_fit,iter,pkq,l_s] = mySa5(solution,a,t0,tf,Markov,avg)
+% ===== ÊäÈë ======%
+% solution ³õÊ¼½â 
+% a ÎÂ¶ÈË¥¼õÏµÊı 0.99
+% t0 ³õÊ¼ÎÂ¶È 120
+% tf ×îÖÕÎÂ¶È 1
+% Markov Âí¶û¿Æ·òÁ´³¤¶È 10000
+% ====== Êä³ö =====%
+% best_solution ×îÓÅ½â
+% best_fit ×îÓÅ½âÄ¿±êÖµ
+% iter µü´ú´ÎÊı
 n = length(solution);
 t = t0;
-solution_new = solution;  % åˆå§‹è§£èµ‹ç»™æœ€æ–°çš„è§£
-best_fit = Inf;   % åˆå§‹åŒ–æœ€ä¼˜é€‚åº”åº¦ï¼ˆæœ€å·®çš„é€‚åº”åº¦ï¼‰
-fit = Inf;      %  åˆå§‹åŒ–å½“å‰çš„é€‚åº”åº¦
-best_solution = solution;  % æœ€ä¼˜è§£
+solution_new = solution;  % ³õÊ¼½â¸³¸ø×îĞÂµÄ½â
+best_fit = Inf;   % ³õÊ¼»¯×îÓÅÊÊÓ¦¶È£¨×î²îµÄÊÊÓ¦¶È£©
+fit = Inf;      %  ³õÊ¼»¯µ±Ç°µÄÊÊÓ¦¶È
+best_solution = solution;  % ×îÓÅ½â
 iter = 1;
 l_s =[];
 q=1;
-% -----------------------è¿­ä»£è¿‡ç¨‹------------------------------------%
+% -----------------------µü´ú¹ı³Ì------------------------------------%
 while t >= tf
     for j = 1:Markov
-% -----------------------äº§ç”Ÿæ–°è§£è¿‡ç¨‹------------------------------------%
-        %è¿›è¡Œæ‰°åŠ¨,äº§ç”Ÿæ–°çš„åºåˆ—solution_new;
-        if (rand < 0.7) % æ¦‚ç‡å°äº0.7 é‡‡å–äº¤æ¢ä¸¤ä¸ªæ•°ä½ç½®çš„æ–¹å¼äº§ç”Ÿæ–°è§£
+% -----------------------²úÉúĞÂ½â¹ı³Ì------------------------------------%
+        %½øĞĞÈÅ¶¯,²úÉúĞÂµÄĞòÁĞsolution_new;
+        if (rand < 0.7) % ¸ÅÂÊĞ¡ÓÚ0.7 ²ÉÈ¡½»»»Á½¸öÊıÎ»ÖÃµÄ·½Ê½²úÉúĞÂ½â
             ind1 = 0;  ind2 = 0;
             while(ind1 == ind2 && ind1 >= ind2)
                 ind1 = ceil(rand*n);
@@ -38,7 +38,7 @@ while t >= tf
             temp = solution_new(ind1);
             solution_new(ind1) = solution_new(ind2);
             solution_new(ind2) = temp;
-        else % æ¦‚ç‡å¤§äºç­‰äº0.7 é‡‡å–æˆç»„äº¤æ¢è¿ç»­ä¸‰ä¸ªæ•°ä½ç½®çš„æ–¹å¼äº§ç”Ÿæ–°è§£
+        else % ¸ÅÂÊ´óÓÚµÈÓÚ0.7 ²ÉÈ¡³É×é½»»»Á¬ĞøÈı¸öÊıÎ»ÖÃµÄ·½Ê½²úÉúĞÂ½â
             ind = zeros(3,1);
             L_ind = length(unique(ind));
             while (L_ind < 3)
@@ -52,16 +52,16 @@ while t >= tf
             solution0(a1+c1-b1:c1) = solution_new(a1:b1);
             solution_new = solution0;
         end
-% -----------------------è®¡ç®—é€‚åº”åº¦è¿‡ç¨‹------------------------------------ %
-        %è®¡ç®—é€‚åº”åº¦fit_new
-        fit_new = getT(solution_new,avg);
+% -----------------------¼ÆËãÊÊÓ¦¶È¹ı³Ì------------------------------------ %
+        %¼ÆËãÊÊÓ¦¶Èfit_new
+        fit_new = getT5(solution_new,avg);
         
-% -----------------------è§£çš„æ›´æ–°è¿‡ç¨‹------------------------------------ %
+% -----------------------½âµÄ¸üĞÂ¹ı³Ì------------------------------------ %
         if fit_new<fit 
             fit = fit_new;
             disp(fit);
             solution = solution_new;
-            %å¯¹æœ€ä¼˜è·¯çº¿å’Œè·ç¦»æ›´æ–°
+            %¶Ô×îÓÅÂ·ÏßºÍ¾àÀë¸üĞÂ
             if  fit_new < best_fit           
                 iter = iter + 1;
                 best_fit = fit_new;
@@ -76,27 +76,24 @@ while t >= tf
         solution_new = solution;
 %         disp(solution_new);
     end
-    t = t*a; %é™æ¸©
+    t = t*a; %½µÎÂ
     pkq(q,:) = solution_new;
     l_s(q) = fit_new;
     q=q+1;
-    if(mod(q,30)==0)
-        plot(l_s)
-    end
 end
 end
 
 
-%æ±‚t
-function[t] = getT( P,avg )
-N = zeros(4,100);
-%æ‰©å……
-for n = 1:66        %%%%%%
+%Çót
+function[t] = getT5( P,avg )
+N = zeros(4,72);
+%À©³ä
+for n = 1:66        
 N(1:4,3+n) = avg(1:4,P(n));
 end
 i = 4;
 Tarray = zeros(4) ;
-while (i<=66)
+while (i<=72)
     Tarray(1) = Tarray(1) + N(1,i);
     Tarray(2) = Tarray(2) + N(2,i-1);
     if(Tarray(2)<Tarray(1))
