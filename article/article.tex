@@ -19,6 +19,7 @@
 \usepackage{subfigure}
 \usepackage{appendix}
 \usepackage{setspace}
+\usepackage{amssymb}
 \usepackage{url}
 \usepackage{booktabs}
 \usepackage{geometry}
@@ -90,21 +91,24 @@
 %	\end{table}
 	\begin{table}[htbp]
 		\centering
-		\begin{tabular}{ c c }
+		\begin{tabular}{ c c c}
 			\toprule[2pt]
-			符号 & 说明   \\
+			符号 & 说明  & 单位 \\
 			\hline
-			$YM1\sim YM10$ & 疫苗  \\
-			$CJ1\sim CJ4$ &  工位 \\
-			$T_{ij}$&  第$i$个疫苗在第$j$个工位上的生产用时（符合正态分布）\\
-			$\mu_{ij}$& 均值\\
-			$\sigma_{ij}$ & 方差\\
-			$T_{\Sigma}$ & 总用时 \\
-			$\alpha_{ij}$ & 加权系数\\
-			$T_{W}$ & 等待时间 \\
-			$M$ & 销售额 \\
-			$m_{i}$ & 疫苗$i$的单价 \\
-			$n_{i}$ & 疫苗$i$的产量 \\
+			YM1$\sim$YM10 & 疫苗 & \\
+			CJ1$\sim$CJ4 &  工位 &\\
+			$T(i,j)$&  疫苗YM$i$在工位CJ$j$上生产耗时的随机变量&\\
+			$\mu(i,j)$& $T(i,j)$的均值 &\\
+			$\sigma(i,j)$ & 方差 &\\
+			$T_{\Sigma}$ & 总用时 &\\
+			$\alpha(i,j)$ & 加权系数 &\\
+			$T_{W}$ & 等待时间 & b\\
+			$M$ & 销售额 & \\
+			$m_{i}$ & 疫苗$i$的单价 & \\
+			$n_{i}$ & 疫苗$i$的产量 & \\
+			$X_{k}$& 按顺序第$k$个被生产的疫苗& \\
+			$\Omega_{in}(k,j)$& 第$k$个疫苗进入CJ$j$的时刻 & \\
+			$\Omega_{out}(k,j)$& 第$k$个疫苗离开CJ$j$的时刻 & \\
 			  
 			\bottomrule[2pt]
 		\end{tabular}\caption{表格标题}\label{p1}
@@ -276,13 +280,33 @@
 	\subsection{问题二}
 	\subsubsection{模型建立}
 	建立优化模型如下
+	确定约束条件：
+	前一种类型的疫苗离开某个工位后，后一种类型的疫苗才能进入这个工位。即后一疫苗进入此工位的时刻应大于前一疫苗离开的时刻。即：
+	\begin{equation}
+		\Omega_{in}(k,j)\geqslant\Omega_{out}(k-1,j)
+	\end{equation}
+	每个工位不能同时生产不同类型的疫苗，且生产不允许插队。可以表示为：
+	\begin{equation}
+		\Omega_{in}(k,j)=\Omega_{out}(k,j-1)
+	\end{equation}
+	疫苗在一个工位上生产完才可离开，即：
+	\begin{equation}
+		\Omega_{out}(k,j)\geqslant\Omega_{in}(k,j)+t(
+	\end{equation}
 	\begin{equation}
 		\begin{split}
-		\min &T\\
-		&s.t.
+		\min &T=\Omega_{out}(10,4)-\Omega_{in}(1,1)\\
+		&s.t. 
 		\end{split}
 	\end{equation}
-	总时间的求解算法
+	有如下关系：
+	\begin{equation}
+		\Omega_{out}
+	\end{equation}
+	\begin{equation}
+			aa
+	\end{equation}
+	总时间的求解算法，总时间$T_{\Sigma}$可以递归求得
 	\subsubsection{模型求解}
 	我们使用模拟退火算法求解
 	算法流程：
@@ -336,7 +360,9 @@
 	\subsection{问题四}
 	\subsubsection{模型建立}
 	每种疫苗的生产用时由其耗时最多的工位决定。
+	\par 总用时符合正态分布
 	\subsubsection{模型求解}
+	求出正态分布的概率分布函数
 	\subsubsection{3}
 	
 	\subsection{问题五}
@@ -356,8 +382,12 @@
 		aa
 	\end{split}
 	\end{equation}
-	优化目标为销售额
+	以一个批次为单位进行生产
+	\par 优化目标为销售额
+	\par 线性规划
+	\par 模拟退火算法
 	\subsubsection{模型求解}
+	结果修正
 	\subsubsection{3}
 	
 	\section{模型评价}
