@@ -293,6 +293,10 @@
 	\begin{equation}
 		\Omega_{out}(k,j)\geqslant\Omega_{in}(k,j)+t(k,j)
 	\end{equation}
+	不考虑每个疫苗在每个工位上生产耗时的随机性，可以确定其值为平均值，即：
+	\begin{equation}
+		t(k,j)=\mu(x_{k},j)
+	\end{equation}
 	\begin{equation}
 		\begin{split}
 		\min \quad&T_{\Sigma}=\Omega_{out}(10,4)-\Omega_{in}(1,1)\\
@@ -302,13 +306,16 @@
 	有如下关系：
 	\begin{equation}
 		\Omega_{out}(k,j)=\max\{\Omega_{in}(k,j)+t(k,j),\Omega_{out}(k-1,j+1)\}
+		\label{eq7}
 	\end{equation}
 	\begin{equation}
 		\Omega_{in}(k,j)=\max\{\Omega_{out}(k-1,j),\Omega_{out}(k,j-1)\}
+		\label{eq8}
 	\end{equation}
-	总时间的求解算法，总时间$T_{\Sigma}$可以递归求得
+	总时间的求解算法，总时间$T_{\Sigma}$可以依据式\ref{eq7}、式\ref{eq8}递归求得
 	\subsubsection{模型求解}
-	我们使用模拟退火算法求解
+	由于本问题的目标函数为非线性，因而我们采用启发式算法求解。
+	\par 我们使用模拟退火算法求解
 	算法流程：
 	解空间
 	算法的每一个解为十种类型疫苗的不同排列
@@ -387,6 +394,8 @@
 	\par 线性规划
 	\par 模拟退火算法
 	\subsubsection{模型求解}
+	先用线性规划求出
+	由于每个工位的生产过程中必定有空闲的时间，因此其最终产量不可能达到理想产量。但是我们可以
 	结果修正
 	\subsubsection{3}
 	
