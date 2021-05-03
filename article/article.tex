@@ -292,7 +292,7 @@
 	
 	\subsection{问题二}
 	\subsubsection{生产过程分析}
-	根据题意，绘制出生产过程的示意图如下图\ref{pipeline}所示。CJ1$\sim$CJ4表示4个工位，从左往右表示时间流逝的过程，各个颜色的区块表示不同种疫苗的生产时间段。
+	根据题意，绘制出生产过程的示意图如下图\ref{pipeline1}所示。CJ1$\sim$CJ4表示4个工位，从左往右表示时间流逝的过程，各个颜色的区块表示不同种疫苗的生产时间段。
 	\begin{figure}[H]
 		\centering %图片居中显示
 		\includegraphics[scale=0.5]{pipe1.pdf}
@@ -300,42 +300,43 @@
 	\end{figure}
 	由图\ref{pipeline1}可知，后续工位在生产过程中，由于下一疫苗还未完成在前一工位的生产，因此会有等待时间$T_{W}$。用$\Omega_{in}(k,j)$、$\Omega_{out}(k,j)$分别表示顺序第$k$位的疫苗进入和退出工位CJ$j$的时刻。则总时间$T_{\Sigma}$可以表示为$T_{\Sigma}。(\boldsymbol{x})=\Omega_{out}(10,4)-\Omega_{in}(1,1)$
 	\subsubsection{模型建立}
-	从整体来看，本题所有问题属于流水线平衡和优化问题，均可分为优化算法和平衡目标两大方面。%基于 0 － 1 规划的成衣制造流水线平衡建模与仿真
-	平衡目标即我们规范设置的满足约束条件的目标函数，属于模型建立，而优化算法则是我们求解目标函数的算法，是模型求解的主要内容。
-		
-	问题二中目标函数易于表示，但约束条件为非线性无法脱离目标函数单独计算。所以我们采用MATLAB构建求解总时间函数，总时间的求解算法采用流水线算法，该算法基于流水线平衡理论，结合具体约束条件。
+%	从整体来看，本题所有问题属于流水线平衡和优化问题，均可分为优化算法和平衡目标两大方面。%基于 0 － 1 规划的成衣制造流水线平衡建模与仿真
+%	平衡目标即我们规范设置的满足约束条件的目标函数，属于模型建立，而优化算法则是我们求解目标函数的算法，是模型求解的主要内容。
+%		
+%	问题二中目标函数易于表示，但约束条件为非线性无法脱离目标函数单独计算。所以我们采用MATLAB构建求解总时间函数，总时间的求解算法采用流水线算法，该算法基于流水线平衡理论，结合具体约束条件。
 	
 	建立优化模型确定约束条件：
 	\begin{itemize}
 		\item 决策变量 
 		\par 本问题的决策变量$\boldsymbol{x}=(x_{1},x_{2},\dots,x_{10})$表示10种疫苗的生产顺序排列，其中一个元素$x_{k}$表示第$k$个被生产的疫苗，其值$x_{k}\in$(YM1,YM2,$\dots$,YM10)。
 		\item 目标函数
-		\par 总时间的求解算法，总时间$T_{\Sigma}$可以依据式\ref{eq7}、式\ref{eq8}递归求得。
+		\par 本问题的目标是使得总时间$T_{\Sigma}$最小，由图\ref{pipeline1}可知，总时间可用最后一个疫苗离开工位4的时刻与第一个疫苗进入工位1作差求得。因而目标函数可表示为
+		\begin{equation}
+			\min \quad T_{\Sigma}(\boldsymbol{x})=\Omega_{out}(10,4)-\Omega_{in}(1,1)
+		\end{equation}
 		\item 约束条件
-		\par 前一种类型的疫苗离开某个工位后，后一种类型的疫苗才能进入这个工位。即后一疫苗进入此工位的时刻应大于前一疫苗离开的时刻。即：
+		\par 前一种类型的疫苗离开某个工位后，后一种类型的疫苗才能进入这个工位。即后一疫苗进入此工位的时刻应大于前一疫苗离开的时刻。即
 	\begin{equation}
 		\Omega_{in}(k,j)\geqslant\Omega_{out}(k-1,j)
 	\end{equation}
-		每个工位不能同时生产不同类型的疫苗，且生产不允许插队。一种疫苗一离开上一工位即进入下一工位，可以表示为：
+	当前疫苗须在离开上一工位后才能进入下一工位，即
 	\begin{equation}
-		\Omega_{in}(k,j)=\Omega_{out}(k,j-1)
+		\Omega_{in}(k,j)\geqslant\Omega_{out}(k,j-1)
 	\end{equation}
-	疫苗在一个工位上生产完才可离开，即：
+	疫苗在一个工位上生产完才可离开，即
 	\begin{equation}
 		\Omega_{out}(k,j)\geqslant\Omega_{in}(k,j)+t(k,j)
 	\end{equation}
-	不考虑每个疫苗在每个工位上生产耗时的随机性，可以确定其值为平均值，即：
+	设第一个疫苗进入第一个工位的时刻为0，即
+	\begin{equation}
+		\Omega_{in}(1,1)=0
+		\label{eq0}
+	\end{equation}
+
+	不考虑每个疫苗在每个工位上生产耗时的随机性，可以确定其值为平均值，即
 	\begin{equation}
 		t(k,j)=\mu(x_{k},j)
-	\end{equation}
-	有如下关系：
-	\begin{equation}
-		\Omega_{out}(k,j)=\max\{\Omega_{in}(k,j)+t(k,j),\Omega_{out}(k-1,j+1)\}
-		\label{eq7}
-	\end{equation}
-	\begin{equation}
-		\Omega_{in}(k,j)=\max\{\Omega_{out}(k-1,j),\Omega_{out}(k,j-1)\}
-		\label{eq8}
+		\label{eq1}
 	\end{equation}
 		
 
@@ -345,24 +346,39 @@
 	\begin{equation}
 		\begin{split}
 		\min \quad&T_{\Sigma}(\boldsymbol{x})=\Omega_{out}(10,4)-\Omega_{in}(1,1)\\
-		&s.t. 
+		s.t. \quad &\Omega_{in}(k,j)\geqslant\Omega_{out}(k-1,j)\\
+		&\Omega_{in}(k,j)\geqslant\Omega_{out}(k,j-1)\\
+		&\Omega_{out}(k,j)\geqslant\Omega_{in}(k,j)+t(k,j)\\
+		&\Omega_{in}(1,1)=0\\
+		&t(k,j)=\mu(x_{k},j)
 		\end{split}
 	\end{equation}
 
 	\end{itemize}
-	
-	为方便理解和求解总时间，我们通过下图，模拟某次确定顺序生产的时间流动。
 
-	从图可以看出，总时间可以用工位CJ4的总时间计算，即工位CJ4的生产时间加其等待时间。而工位CJ4的等待时间又和工位CJ3的生产时间和等待时间有关。如此，问题由通过循环和判断构成。我们结合求每个工位当前总时间的循环语句和疫苗进入每个工位时前后工位总时间的大小的判断语句，构造出符合题意的function[t]。
+%	从图可以看出，总时间可以用工位CJ4的总时间计算，即工位CJ4的生产时间加其等待时间。而工位CJ4的等待时间又和工位CJ3的生产时间和等待时间有关。如此，问题由通过循环和判断构成。我们结合求每个工位当前总时间的循环语句和疫苗进入每个工位时前后工位总时间的大小的判断语句，构造出符合题意的function[t]。
 	
 	\subsubsection{模型求解}
-	
-	在确定目标函数后，根据目标函数的输入为疫苗生产顺序序列，我们选择合适的优化算法进行求解。本题若采取暴力，需要遍历10！次得到对应的总时间再比较，不具有实际性和通用性。因此需要使用算法减少遍历次数。
-	
+	若要使得总时间最小，需要让$\Omega_{in}(i,j)$和$\Omega_{out}(i,j)$取其取值区间最左端的值。因而可得到如下递推关系：
+	\begin{equation}
+		\Omega_{out}(k,j)=\Omega_{in}(k,j)+t(k,j)
+		\label{eq7}
+	\end{equation}
+	\begin{equation}
+		\Omega_{in}(k,j)=\max\{\Omega_{out}(k-1,j),\Omega_{out}(k,j-1)\}
+		\label{eq8}
+	\end{equation}
+	从而，总时间$T_{\Sigma}$可以依据式\ref{eq7}、式\ref{eq8}运用递归算法求得。结合式\ref{eq0}、\ref{eq1}，可以推断出，$T_{\Sigma}$是$t(k,j)$的线性组合，也是$\mu(i,j)$的线性组合。即给定生产顺序$\boldsymbol{x}$，设$x_{k}=$YM$i$，可确定
+	\begin{equation}
+	\begin{split}
+		T_{\Sigma}&=\sum_{k,j}\alpha(x_{k},j)t(k,j)\\
+		&=\sum_{i,j}\alpha(i,j)\mu(i,j)
+		\label{linear}
+	\end{split}
+	\end{equation}
+	\par 对于这样一个非线性优化问题，需要在解空间搜索最优解。本题若采取暴力求解算法，需要遍历10！个解得到对应的总时间再比较，不具有实际性和通用性。因此需要使用算法减少遍历次数。
 	本问题属于非线性最优化问题，其目标函数难以显式表达，因此采用启发式算法求近似最优解。这里我们选用模拟退火算法。 
-	
-	模拟退火算法是一种通用概率启发式算法，用来在一个大的搜寻空间内寻找问 题的最优解。本问题的目标是求出饲料质量即总亲缘度最高的原料混合分配方案。 模拟退火算法具有高效、鲁棒、通用、灵活的优点，因而利用模拟退火可以避免在 求解过程中陷入局部最优。
-	
+	\par 模拟退火算法是一种通用概率启发式算法，用来在一个大的搜寻空间内寻找问 题的最优解。本问题的目标是求出饲料质量即总亲缘度最高的原料混合分配方案。 模拟退火算法具有高效、鲁棒、通用、灵活的优点，因而利用模拟退火可以避免在 求解过程中陷入局部最优。
 	本题模拟退火算法的步骤：
 	\begin{enumerate}
 		\item 解空间和初始解：算法的每一个解为十种类型疫苗的不同排列
@@ -471,26 +487,26 @@
 	
 	\subsection{问题三}
 	\subsubsection{模型建立}
-	问题三与问题二相似，
-	
-	考虑其随机性，每个工位生产每种疫苗的所需时间$T(i,j)$均符合正态分布，即
+	本问题与问题二的差别在于时间的随机性和目标函数的不同。
+	\par 考虑生产用时的随机性，每个工位生产每种疫苗的所需时间$T(i,j)$均符合正态分布，即
 	\begin{equation}
-	T(i,j)\sim\mathcal{N}(\mu(i,j),\sigma(i,j))
+	T(i,j)\sim\mathcal{N}(\mu(i,j),\sigma^2(i,j))
 	\end{equation}
 	%插入图，流水线
 	
 	虽然每个工位生产每种疫苗的耗时有随机性，但是其大小对比关系基本不变。因此我们用均值
-	\par 总用时是$T(i,j)$的线性组合，即
+	\par 由式\ref{linear}可知，总用时是$t(k,j)$的线性组合。由于
 	\begin{equation}
-	T_{\Sigma}=\sum_{i,j}\alpha(i,j)T(i,j)
+	t(k,j)=T(x_{k},j)\sim\mathcal{N}(\mu(x_{k},j),\sigma^2(x_{k},j))
 	\end{equation}
-	也符合正态分布。
+	由定理。   因此总用时$T_{\Sigma}$也符合正态分布。即
 	\begin{equation}
 	T_{\Sigma}\sim\mathcal{N}(\mu_{\Sigma},\sigma_{\Sigma})
 	\end{equation}
-	我们求出其正态分布的参数
+	由定理       我们可以求出其正态分布的参数
 	\begin{equation}
 		\mu_{\Sigma}=\sum_{i,j}\alpha(i,j)\mu(i,j),\sigma_{\Sigma}^{2}=\sum_{i,j}\alpha(i,j)\sigma^{2}(i,j)
+		\label{all}
 	\end{equation}
 	\begin{itemize}
 	\item 决策变量
@@ -504,6 +520,7 @@
         	\max P&=F(x)|_{x=0.95T_{\min}}\\
 			&=\frac{1}{\sqrt{2\pi}\sigma}\int^{x}_{-\infty}e^{-\frac{(t-\mu)^2}{2\sigma^2}}dt|_{x=0.95T_{\min}}
         	\end{split}
+		\label{pr}
 	\end{equation}
 	\item 总体模型
 	\end{itemize}
@@ -514,26 +531,60 @@
 	\end{split}
 	\end{equation}
 	\subsubsection{模型求解}
-	我们首先求得在既定生产顺序下
-	以最大的概率完成这个任务，生产的最优顺序为
+	用模拟退火算法求解
+	\par 以最大的概率完成这个任务，生产的最优顺序为
+	\begin{equation}
+		\boldsymbol{x}^{*}=(YM4,YM10,YM7,YM8,YM2,YM9,YM1,YM5,YM3,YM6)
+	\end{equation}
+	总时间可以表示为
+	\begin{equation}
+		T_{\Sigma}=T(1,1)+T(1,2)+T(1,3)+\sum_{i}^{10}T(i,4)
+	\end{equation}
+	由式\ref{all}，可以求总时间正态分布的参数为
+	\begin{equation}
+		\mu_{\Sigma}=185,\sigma_{\Sigma}^{2}=(3.728)^2
+	\end{equation}
+	再由式\ref{pr}，可以求得最大概率为$P_{\max}=24.79\%$，
+	\par 在确定生产顺序的情况下，缩短的时间比例$\delta$与最大概率之间的关系为
 	
 	\subsection{问题四}
-	\subsubsection{模型描述和假设}
+	\subsubsection{模型描述与假设}
+	本题中，约束条件增加为每种类型疫苗的生产任务不可拆分和在可靠性为90\%的前提下。所以为了简便求解，我们这一题的重点不在细节地通过生产顺序来计算流水线平衡目标。而是通过整体流水线的正态分布特性使用概率和微分方程进行求解。
+	
+	另外，为了方便求解。我们不采用多个独立事件的概率乘法公式作为目标函数，即不以每天每工位生产的可靠性作为独立事件，使乘法公式结果为90\%的概率。而是通过整体求解再可靠性90\%前提下的最大总时间。
+	\subsubsection{模型建立}
+	由流水线图\ref{pipeline2}可知，其每天生产时间由耗时最多的工位决定。
 	\begin{figure}[H]
 		\centering %图片居中显示
 		\includegraphics[scale=0.5]{pipe2.pdf}
 		\caption{生产过程示意图}\label{pipeline2}
 	\end{figure}
-	由于每类疫苗的生产不可拆分，因此不需要考虑其生产顺序，在一定时间内仅生产同一类疫苗。由生产流水线图\ref{pipeline2}可知，其生产时间由耗时最多的工位决定。由正态分布公式，。因此最终的总时间也服从正态分布。我们求出此正态分布的参数。
+	由于每类疫苗的生产不可拆分，因此不需要考虑其生产顺序，在一定时间内流水线上仅生产同一类疫苗。则一天生产时间$t$服从正态分布，$t\sim\mathcal{N}(\mu,\sigma^2)$。
 	
-	本题中，约束条件增加为每种类型疫苗的生产任务不可拆分和在可靠性为90\%的前提下。所以为了简便求解，我们这一题的重点不在细节地通过生产顺序来计算流水线平衡目标。而是通过整体流水线的正态分布特性使用概率和微分方程进行求解。
+	由正态分布的定理2可知，多个独立正态分布的线性组合仍然服从正态分布。
 	
-	另外，为了方便求解。我们不采用多个独立事件的概率乘法公式作为目标函数，即不以每天每工位生产的可靠性作为独立事件，使乘法公式结果为90\%的概率。而是通过整体求解得到可靠性90\%的最大总时间。
-	\subsubsection{模型建立}
-	在上述模型假设情况下，
-	每种疫苗的生产用时由其耗时最多的工位决定。
+	总时间可以看$X$天最大耗时的线性组合，因此最终的总时间也服从正态分布。我们求出此正态分布的参数。我们假定总共经过$N$整天完成生产，则总时间$X$可以看成$Nt$,$Nt$服从正态分布，$Nt\sim\mathcal{N}(N\mu,N\sigma^2)$。
+	
+	因此总时间$X$的分布函数可以表示为
+	\begin{equation}
+	F(x)=\frac{1}{\sqrt{2\pi}N\sigma}\int^{x}_{-\infty}e^{-\frac{t-N\mu)^2}{2N^2\sigma^2}}dt
+	\end{equation}
+	为从整体满足可靠性90\%，我们需要求以下解积分方程：
+	\begin{equation}
+	\frac{1}{\sqrt{2\pi}N\sigma}\int^{x}_{-\infty}e^{-\frac{(t-N\mu)^2}{2N^2\sigma^2}}dt = 0.9
+	\end{equation}
+	该积分方程的解析解为满足可靠性要求的最短时间。
 	\subsubsection{模型求解}
-	求出正态分布的概率分布函数
+	求出总时间$Nt$的概率分布函数如图所示：
+	\begin{figure}[H]
+		\centering %图片居中显示
+		\includegraphics[scale=0.5]{正态2.jpg}
+		\caption{总时间的概率分布函数}
+	\end{figure}
+	\qquad 用MATLAB有关正态函数对简化过后的积分方程进行求解，得到可靠性为90\%的前提下的最短时间，将最短时间变化为天数，即为最终答案。
+	
+	\qquad 最短天数为 $ T_{\Sigma}/16 = 134.5725 $，即需要至少135天。
+
 	\subsection{问题五}
 	\subsubsection{总体思路}
 	由于每一种疫苗的生产用时不同、价格不同，因此其收益率各有差异。为达到最大销售额，各类型疫苗的产量应呈一定比例关系。比如：收益率高的疫苗比例大，可能全部生产；收益率低的比例小，可能不生产。因此我们需要确定能使得销售额最大的产量比例关系。
@@ -621,8 +672,7 @@
 			 \hline
 		\end{tabular}
 	\end{table}
-	对比表\ref{chanliang2}和表\ref{chanliang1}可知，最终优化了生产顺序的产量结果略小于忽略等待时间的结果。其最大销售额为
-	
+	对比表\ref{chanliang2}和表\ref{chanliang1}可知，最终优化了生产顺序的产量结果略小于忽略等待时间的结果。其最大销售额为$M_{max}=$
 	
 	\section{模型评价}
 	\subsection{模型的优点}
