@@ -1,5 +1,5 @@
 %求最优T流水线算法,A,N,V,T,t
-function[P,t] = getT3( rand_10,avg,var )
+function[P,N,Tout,A,t,X,T,TTT] = getT3( rand_10,avg,var )
 Tmin_95 = 184.7786*0.95;  %95%的Tmin
 A = zeros(4,13);%稀疏向量
 N = zeros(4,10);%随机重整的avg
@@ -38,17 +38,17 @@ i = i + 1;
 end
 s = 4;
 i = 13;
-while i >1
+while i >3
     for k = 1:4
        TTT(k,i) = Tout(s,i) - N(s,i) - Tout (k,i-1);
     if abs(TTT(k,i)) < 0.00001
-        A(k,i-1) = 1;
-        s = k; 
+        A(k,i) = 1;
     end
     end
+    s = k;
     i = i-1;
 end
- A(4,13) = 1;
+ A(1,1) = 1;
 t = Tarray(4); 
 X = A.* N;
 T = sum(sum(X));
