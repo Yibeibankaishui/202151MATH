@@ -304,8 +304,13 @@
 	问题二中目标函数易于表示，但约束条件为非线性无法脱离目标函数单独计算。所以我们采用MATLAB构建求解总时间函数，总时间的求解算法采用流水线算法，该算法基于流水线平衡理论，结合具体约束条件。
 	
 	建立优化模型确定约束条件：
-	
-	前一种类型的疫苗离开某个工位后，后一种类型的疫苗才能进入这个工位。即后一疫苗进入此工位的时刻应大于前一疫苗离开的时刻。即：
+	\begin{itemize}
+		\item 决策变量 
+		\par 本问题的决策变量$\boldsymbol{x}=(x_{1},x_{2},\dots,x_{10})$表示10种疫苗的生产顺序排列，其中一个元素$x_{k}$表示第$k$个被生产的疫苗，其值$x_{k}\in$(YM1,YM2,$\dots$,YM10)。
+		\item 目标函数
+		\par 总时间的求解算法，总时间$T_{\Sigma}$可以依据式\ref{eq7}、式\ref{eq8}递归求得。
+		\item 约束条件
+		\par 前一种类型的疫苗离开某个工位后，后一种类型的疫苗才能进入这个工位。即后一疫苗进入此工位的时刻应大于前一疫苗离开的时刻。即：
 	\begin{equation}
 		\Omega_{in}(k,j)\geqslant\Omega_{out}(k-1,j)
 	\end{equation}
@@ -330,8 +335,11 @@
 		\Omega_{in}(k,j)=\max\{\Omega_{out}(k-1,j),\Omega_{out}(k,j-1)\}
 		\label{eq8}
 	\end{equation}
-	总时间的求解算法，总时间$T_{\Sigma}$可以依据式\ref{eq7}、式\ref{eq8}递归求得
-	$\boldsymbol{x}=(x_{1},x_{2},\dots,x_{10})$表示10种疫苗的生产顺序排列，其中一个元素$x_{k}$表示第$k$个被生产的疫苗，其值$x_{k}\in$(YM1,YM2,$\dots$,YM10)。总体的优化模型如下：
+		
+
+
+	\item 总体模型
+	\par 总体的优化模型如下：
 	\begin{equation}
 		\begin{split}
 		\min \quad&T_{\Sigma}(\boldsymbol{x})=\Omega_{out}(10,4)-\Omega_{in}(1,1)\\
@@ -339,6 +347,7 @@
 		\end{split}
 	\end{equation}
 
+	\end{itemize}
 	
 	为方便理解和求解总时间，我们通过下图，模拟某次确定顺序生产的时间流动。
 
