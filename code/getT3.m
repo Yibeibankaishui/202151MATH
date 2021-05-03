@@ -1,6 +1,6 @@
 %求最优T流水线算法,A,N,V,T,t
 function[P] = getT3( rand_10,avg,var )
-Tmin_95 = 187.9657*0.95;  %95%的Tmin
+Tmin_95 = 184.7786*0.95;  %95%的Tmin
 A = zeros(4,13);%稀疏向量
 N = zeros(4,10);%随机重整的avg
 V = zeros(4,10);%随机重整的var
@@ -16,13 +16,15 @@ Tarray = zeros(4) ;
 while (i<=13)
     Tarray(1) = Tarray(1) + N(1,i);
     Tarray(2) = Tarray(2) + N(2,i);
+    temp2 = Tarray(2);
     if(Tarray(2)<Tarray(1))
         Tarray(2) = Tarray(1);
         A(1,i) = 1;
     end
     Tarray(3) = Tarray(3) + N(3,i);
-    if(Tarray(3)<Tarray(2))
-        Tarray(3) = Tarray(2);
+    temp3 = Tarray(3);
+    if(Tarray(3)<temp2)
+        Tarray(3) = temp2;
         if(sum(A(:,i),1)==0)
             A(2,i) = 1;
         end
@@ -32,8 +34,8 @@ while (i<=13)
     end
     
     Tarray(4) = Tarray(4) + N(4,i);
-    if(Tarray(4)<Tarray(3))
-        Tarray(4) = Tarray(3);
+    if(Tarray(4)<temp3)
+        Tarray(4) = temp3;
         if(sum(A(:,i),1)==0)
             A(3,i) = 1;
         end

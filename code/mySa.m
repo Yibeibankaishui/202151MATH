@@ -1,5 +1,5 @@
 %模拟退火
-function [best_solution,best_fit,iter,pkq] = mySa(solution,a,t0,tf,Markov,avg)
+function [best_solution,best_fit,iter,nice] = mySa(solution,a,t0,tf,Markov,avg)
 % ===== 输入 ======%
 % solution 初始解 
 % a 温度衰减系数 0.99
@@ -73,7 +73,7 @@ while t >= tf
         solution_new = solution;
     end
     t = t*a; %降温
-    pkq(q,:) = solution_new;
+    nice(q) = fit_new;
     q=q+1;
 end
 end
@@ -91,16 +91,18 @@ Tarray = zeros(4) ;
 while (i<=16)
     Tarray(1) = Tarray(1) + N(1,i);
     Tarray(2) = Tarray(2) + N(2,i-1);
+    temp2 = Tarray(2);
     if(Tarray(2)<Tarray(1))
         Tarray(2) = Tarray(1);
     end
     Tarray(3) = Tarray(3) + N(3,i-2);
-    if(Tarray(3)<Tarray(2))
-        Tarray(3) = Tarray(2);
+    temp3 = Tarray(3);
+    if(Tarray(3)<temp2)
+        Tarray(3) = temp2;
     end
     Tarray(4) = Tarray(4) + N(4,i-3);
-    if(Tarray(4)<Tarray(3))
-        Tarray(4) = Tarray(3);
+    if(Tarray(4)<temp3)
+        Tarray(4) = temp3;
     end 
 i = i + 1;
 end
