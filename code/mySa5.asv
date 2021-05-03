@@ -54,7 +54,7 @@ while t >= tf
         end
 % -----------------------计算适应度过程------------------------------------ %
         %计算适应度fit_new
-        fit_new = getT5(solution_new,avg);
+        fit_new = getT(solution_new,avg);
         
 % -----------------------解的更新过程------------------------------------ %
         if fit_new<fit 
@@ -88,7 +88,7 @@ end
 
 
 %求t
-function[t] = getT5( P,avg )
+function[t] = getT( P,avg )
 N = zeros(4,100);
 %扩充
 for n = 1:66        %%%%%%
