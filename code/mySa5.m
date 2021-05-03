@@ -1,5 +1,5 @@
 %模拟退火
-function [best_solution,best_fit,iter,pkq] = mySa5(solution,a,t0,tf,Markov,avg)
+function [best_solution,best_fit,iter,pkq,l_s] = mySa5(solution,a,t0,tf,Markov,avg)
 % ===== 输入 ======%
 % solution 初始解 
 % a 温度衰减系数 0.99
@@ -80,23 +80,20 @@ while t >= tf
     pkq(q,:) = solution_new;
     l_s(q) = fit_new;
     q=q+1;
-    if(mod(q,30)==0)
-        plot(l_s)
-    end
 end
 end
 
 
 %求t
 function[t] = getT5( P,avg )
-N = zeros(4,100);
+N = zeros(4,72);
 %扩充
-for n = 1:66        %%%%%%
+for n = 1:66        
 N(1:4,3+n) = avg(1:4,P(n));
 end
 i = 4;
 Tarray = zeros(4) ;
-while (i<=66)
+while (i<=72)
     Tarray(1) = Tarray(1) + N(1,i);
     Tarray(2) = Tarray(2) + N(2,i-1);
     if(Tarray(2)<Tarray(1))
